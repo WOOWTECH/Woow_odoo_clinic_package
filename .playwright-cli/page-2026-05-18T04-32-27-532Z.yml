@@ -1,0 +1,8 @@
+- main [ref=e3]:
+  - generic [ref=e6]:
+    - img "Logo" [ref=e8]
+    - generic [ref=e9]:
+      - link "Manage Databases" [ref=e10] [cursor=pointer]:
+        - /url: /web/database/manager
+      - link "Powered by Odoo" [ref=e11] [cursor=pointer]:
+        - /url: https://www.odoo.com?utm_source=db&utm_medium=auth
