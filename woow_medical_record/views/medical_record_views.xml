@@ -30,6 +30,7 @@
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
+                        <!-- Access Logs button hidden for now — re-enable when needed
                         <button name="action_view_access_logs"
                                 type="object"
                                 class="oe_stat_button"
@@ -39,6 +40,7 @@
                                    widget="statinfo"
                                    string="Access Logs"/>
                         </button>
+                        -->
                     </div>
                     <div class="oe_title">
                         <label for="name"/>

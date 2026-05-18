@@ -21,12 +21,13 @@
               action="medical_record_action_my"
               sequence="20"/>
 
-    <!-- Menu Item: Access Logs (admin only) -->
+    <!-- Menu Item: Access Logs (hidden for now — re-enable when needed)
     <menuitem id="medical_record_menu_logs"
               name="Access Logs"
               parent="medical_record_menu"
               action="medical_record_log_action"
               sequence="30"
               groups="woow_medical_patient.group_medical_admin"/>
+    -->
 
 </odoo>
