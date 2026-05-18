@@ -28,6 +28,7 @@ Woow Medical - Patient Management
         # Views
         'views/medical_patient_views.xml',
         'views/medical_patient_menus.xml',
+        'views/res_partner_views.xml',
     ],
     'demo': [
         'demo/medical_patient_demo.xml',

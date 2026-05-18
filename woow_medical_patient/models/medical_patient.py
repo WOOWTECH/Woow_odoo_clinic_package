@@ -128,9 +128,20 @@ class MedicalPatient(models.Model):
         index=True,
     )
 
+    # --- Smart Button ---
+    related_partner_count = fields.Integer(
+        string='Related Contact Count',
+        compute='_compute_related_partner_count',
+    )
+
     # ------------------------------------------------------------------
     # Compute
     # ------------------------------------------------------------------
+
+    @api.depends('partner_id')
+    def _compute_related_partner_count(self):
+        for patient in self:
+            patient.related_partner_count = 1 if patient.partner_id else 0
 
     @api.depends('birthday')
     def _compute_age(self):
@@ -164,3 +175,18 @@ class MedicalPatient(models.Model):
                     .next_by_code('medical.patient')
                 )
         return super().create(vals_list)
+
+    # ------------------------------------------------------------------
+    # Actions
+    # ------------------------------------------------------------------
+
+    def action_open_partner(self):
+        """Open the linked res.partner record in form view."""
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Contact'),
+            'res_model': 'res.partner',
+            'view_mode': 'form',
+            'res_id': self.partner_id.id,
+        }
