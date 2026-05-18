@@ -4,6 +4,7 @@
     <!-- Root Menu: Medical Management (sequence=80) -->
     <menuitem id="medical_root_menu"
               name="Medical"
+              web_icon="woow_medical_patient,static/description/icon.png"
               sequence="80"
               groups="group_medical_user"/>
 
