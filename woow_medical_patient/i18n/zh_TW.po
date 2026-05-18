@@ -1,0 +1,367 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * woow_medical_patient
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-16 00:00+0000\n"
+"PO-Revision-Date: 2025-11-16 00:00+0000\n"
+"Last-Translator: WoowTech <info@woowtech.io>\n"
+"Language-Team: Chinese (Traditional) <>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: woow_medical_patient
+#: model:ir.model,name:woow_medical_patient.model_medical_patient
+msgid "Medical Patient"
+msgstr "病患"
+
+#. module: woow_medical_patient
+#: model:ir.module.category,name:woow_medical_patient.module_category_medical
+msgid "Medical"
+msgstr "醫療管理"
+
+#. module: woow_medical_patient
+#: model:res.groups,name:woow_medical_patient.group_medical_user
+msgid "Medical User"
+msgstr "醫療使用者"
+
+#. module: woow_medical_patient
+#: model:res.groups,name:woow_medical_patient.group_medical_physician
+msgid "Medical Physician"
+msgstr "醫師"
+
+#. module: woow_medical_patient
+#: model:res.groups,name:woow_medical_patient.group_medical_admin
+msgid "Medical Administrator"
+msgstr "醫療管理者"
+
+#. module: woow_medical_patient
+#: model:res.groups,name:woow_medical_patient.group_medical_pii
+msgid "Medical PII Access"
+msgstr "醫療個資存取"
+
+#. module: woow_medical_patient
+#: model:ir.sequence,name:woow_medical_patient.seq_medical_patient
+msgid "Medical Patient"
+msgstr "病患編號"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Patient"
+msgstr "病患"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__partner_id
+msgid "Related Partner"
+msgstr "關聯夥伴"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,help:woow_medical_patient.field_medical_patient__partner_id
+msgid "The underlying res.partner record for this patient."
+msgstr "此病患對應的 res.partner 紀錄。"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__medical_no
+msgid "Patient No."
+msgstr "病患編號"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,help:woow_medical_patient.field_medical_patient__medical_no
+msgid "Auto-generated patient number (P000001)."
+msgstr "自動產生的病患編號 (P000001)。"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__national_id
+msgid "National ID"
+msgstr "身分證字號"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,help:woow_medical_patient.field_medical_patient__national_id
+msgid "National identification number (restricted to PII group)."
+msgstr "身分證字號（僅限個資權限群組檢視）。"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__nhi_card_no
+msgid "NHI Card No."
+msgstr "健保卡號"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,help:woow_medical_patient.field_medical_patient__nhi_card_no
+msgid "National Health Insurance card number (restricted to PII group)."
+msgstr "健保卡卡號（僅限個資權限群組檢視）。"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__gender
+msgid "Gender"
+msgstr "性別"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields.selection,name:woow_medical_patient.selection__medical_patient__gender__male
+msgid "Male"
+msgstr "男"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields.selection,name:woow_medical_patient.selection__medical_patient__gender__female
+msgid "Female"
+msgstr "女"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields.selection,name:woow_medical_patient.selection__medical_patient__gender__other
+msgid "Other"
+msgstr "其他"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__birthday
+msgid "Birthday"
+msgstr "生日"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__age
+msgid "Age"
+msgstr "年齡"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,help:woow_medical_patient.field_medical_patient__age
+msgid "Computed from birthday."
+msgstr "依生日計算。"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__blood_type
+msgid "Blood Type"
+msgstr "血型"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__allergies
+msgid "Allergies"
+msgstr "過敏史"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,help:woow_medical_patient.field_medical_patient__allergies
+msgid "Known allergies."
+msgstr "已知的過敏史。"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__chronic_diseases
+msgid "Chronic Diseases"
+msgstr "慢性病史"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,help:woow_medical_patient.field_medical_patient__chronic_diseases
+msgid "Chronic disease history."
+msgstr "慢性病史紀錄。"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__medication_history
+msgid "Medication History"
+msgstr "長期用藥"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,help:woow_medical_patient.field_medical_patient__medication_history
+msgid "Long-term medication usage."
+msgstr "長期用藥紀錄。"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__surgery_history
+msgid "Surgery History"
+msgstr "手術史"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,help:woow_medical_patient.field_medical_patient__surgery_history
+msgid "Past surgical procedures."
+msgstr "過去的手術紀錄。"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__emergency_name
+msgid "Emergency Contact"
+msgstr "緊急聯絡人"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,help:woow_medical_patient.field_medical_patient__emergency_name
+msgid "Emergency contact person name."
+msgstr "緊急聯絡人姓名。"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__emergency_phone
+msgid "Emergency Phone"
+msgstr "緊急聯絡電話"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,help:woow_medical_patient.field_medical_patient__emergency_phone
+msgid "Emergency contact phone number."
+msgstr "緊急聯絡人電話號碼。"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__emergency_relation
+msgid "Relationship"
+msgstr "關係"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,help:woow_medical_patient.field_medical_patient__emergency_relation
+msgid "Relationship to the patient."
+msgstr "與病患的關係。"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__company_id
+msgid "Company"
+msgstr "公司"
+
+#. module: woow_medical_patient
+#: model:ir.actions.act_window,name:woow_medical_patient.medical_patient_action
+msgid "Patients"
+msgstr "病患列表"
+
+#. module: woow_medical_patient
+#: model:ir.ui.menu,name:woow_medical_patient.medical_root_menu
+msgid "Medical"
+msgstr "醫療管理"
+
+#. module: woow_medical_patient
+#: model:ir.ui.menu,name:woow_medical_patient.medical_patient_menu
+msgid "Patients"
+msgstr "病患"
+
+#. module: woow_medical_patient
+#: model:ir.ui.menu,name:woow_medical_patient.medical_config_menu
+msgid "Configuration"
+msgstr "設定"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "New"
+msgstr "新建"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Patient Name"
+msgstr "病患姓名"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Contact"
+msgstr "聯絡資訊"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Identification"
+msgstr "身分識別"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Basic Information"
+msgstr "基本資料"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Personal"
+msgstr "個人資料"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Emergency Contact"
+msgstr "緊急聯絡人"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Address"
+msgstr "地址"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Medical History"
+msgstr "病史"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Known allergies..."
+msgstr "已知過敏史..."
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Chronic disease history..."
+msgstr "慢性病史..."
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Long-term medications..."
+msgstr "長期用藥..."
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Past surgical procedures..."
+msgstr "過去手術紀錄..."
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_search
+msgid "Search Patients"
+msgstr "搜尋病患"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_search
+msgid "Name / Phone / No."
+msgstr "姓名 / 電話 / 編號"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_search
+msgid "Has Allergies"
+msgstr "有過敏史"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_search
+msgid "Group By"
+msgstr "群組"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_search
+msgid "Registration Month"
+msgstr "註冊年月"
+
+#. module: woow_medical_patient
+#: model_terms:ir.actions.act_window,help:woow_medical_patient.medical_patient_action
+msgid "Create your first patient"
+msgstr "建立您的第一位病患"
+
+#. module: woow_medical_patient
+#: model_terms:ir.actions.act_window,help:woow_medical_patient.medical_patient_action
+msgid "Register new patients to manage their medical records."
+msgstr "登錄新病患以管理其病歷資料。"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Street"
+msgstr "街道"
+
+#. module: woow_medical_patient
+#: model_terms:ir.ui.view,arch_db:woow_medical_patient.medical_patient_view_form
+msgid "Street 2"
+msgstr "街道 2"
+
+#. module: woow_medical_patient
+#: sql_constraint:medical.patient:
+msgid "Patient number must be unique per company."
+msgstr "同一公司內病患編號不可重複。"
+
+#. module: woow_medical_patient
+#: model:res.groups,comment:woow_medical_patient.group_medical_user
+msgid "Basic medical staff (reception, nurses). Can read/create patients."
+msgstr "基層醫療人員（櫃台、護理師）。可檢視/建立病患。"
+
+#. module: woow_medical_patient
+#: model:res.groups,comment:woow_medical_patient.group_medical_physician
+msgid "Physicians. Can create and manage medical records."
+msgstr "醫師。可建立及管理病歷。"
+
+#. module: woow_medical_patient
+#: model:res.groups,comment:woow_medical_patient.group_medical_admin
+msgid "Full access to all medical data and configuration."
+msgstr "擁有所有醫療資料與設定的完整存取權限。"
+
+#. module: woow_medical_patient
+#: model:res.groups,comment:woow_medical_patient.group_medical_pii
+msgid "Independent group granting access to sensitive PII fields (national ID, NHI card)."
+msgstr "獨立群組，授權存取敏感個資欄位（身分證字號、健保卡號）。"

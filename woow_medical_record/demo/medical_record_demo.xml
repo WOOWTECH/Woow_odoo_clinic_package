@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================ -->
+    <!-- Demo Medical Records: 15 records across 3 states             -->
+    <!-- References demo patients from woow_medical_patient           -->
+    <!-- ============================================================ -->
+
+    <!-- Patient 1 (王小明): 3 records -->
+    <record id="demo_record_01" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_1"/>
+        <field name="visit_date">2025-11-01 09:00:00</field>
+        <field name="subjective"><![CDATA[<p>Patient reports mild acne scarring on both cheeks. Desires smoother skin texture.</p>]]></field>
+        <field name="objective"><![CDATA[<p>Multiple ice-pick scars observed on bilateral cheeks. Skin type III.</p>]]></field>
+        <field name="assessment"><![CDATA[<p>Moderate acne scarring suitable for fractional laser treatment.</p>]]></field>
+        <field name="plan"><![CDATA[<p>Fractional CO2 laser session scheduled. Pre-treatment numbing cream applied 30 min prior.</p>]]></field>
+        <field name="diagnosis">Acne scarring - moderate</field>
+        <field name="vital_height">175</field>
+        <field name="vital_weight">72</field>
+        <field name="vital_bp_systolic">120</field>
+        <field name="vital_bp_diastolic">80</field>
+        <field name="vital_pulse">72</field>
+        <field name="vital_temp">36.5</field>
+        <field name="state">signed</field>
+        <field name="signed_by" ref="base.user_admin"/>
+        <field name="signed_at">2025-11-01 10:30:00</field>
+    </record>
+
+    <record id="demo_record_02" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_1"/>
+        <field name="visit_date">2025-11-15 10:00:00</field>
+        <field name="subjective"><![CDATA[<p>Follow-up visit. Patient reports mild redness subsided after 5 days. Satisfied with initial results.</p>]]></field>
+        <field name="objective"><![CDATA[<p>Healing well. Mild post-inflammatory erythema. No infection signs.</p>]]></field>
+        <field name="assessment"><![CDATA[<p>Good recovery. Ready for second session in 4 weeks.</p>]]></field>
+        <field name="plan"><![CDATA[<p>Schedule second laser session. Continue moisturizer and sunscreen SPF50.</p>]]></field>
+        <field name="diagnosis">Post-laser follow-up</field>
+        <field name="state">signed</field>
+        <field name="signed_by" ref="base.user_admin"/>
+        <field name="signed_at">2025-11-15 10:45:00</field>
+    </record>
+
+    <record id="demo_record_03" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_1"/>
+        <field name="visit_date">2025-12-10 09:30:00</field>
+        <field name="subjective"><![CDATA[<p>Second laser treatment session. No adverse reactions since last visit.</p>]]></field>
+        <field name="objective"><![CDATA[<p>Skin texture improved. Scars approximately 40% reduced.</p>]]></field>
+        <field name="state">in_progress</field>
+    </record>
+
+    <!-- Patient 2 (林美玲): 3 records -->
+    <record id="demo_record_04" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_2"/>
+        <field name="visit_date">2025-10-20 14:00:00</field>
+        <field name="subjective"><![CDATA[<p>Patient desires lip augmentation. Wants natural-looking fuller lips.</p>]]></field>
+        <field name="objective"><![CDATA[<p>Thin upper lip. Good skin elasticity. No previous filler history.</p>]]></field>
+        <field name="assessment"><![CDATA[<p>Suitable candidate for hyaluronic acid lip filler.</p>]]></field>
+        <field name="plan"><![CDATA[<p>HA filler 1ml injection planned. Ice pack pre-treatment.</p>]]></field>
+        <field name="diagnosis">Lip augmentation consultation</field>
+        <field name="vital_bp_systolic">115</field>
+        <field name="vital_bp_diastolic">75</field>
+        <field name="vital_pulse">68</field>
+        <field name="vital_temp">36.4</field>
+        <field name="state">signed</field>
+        <field name="signed_by" ref="base.user_admin"/>
+        <field name="signed_at">2025-10-20 15:00:00</field>
+    </record>
+
+    <record id="demo_record_05" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_2"/>
+        <field name="visit_date">2025-11-05 11:00:00</field>
+        <field name="subjective"><![CDATA[<p>Follow-up after lip filler. Mild swelling resolved. Happy with result.</p>]]></field>
+        <field name="objective"><![CDATA[<p>Symmetrical lip augmentation. No lumps or irregularities.</p>]]></field>
+        <field name="assessment"><![CDATA[<p>Excellent result. No complications.</p>]]></field>
+        <field name="plan"><![CDATA[<p>No further treatment needed. Return in 6 months for touch-up if desired.</p>]]></field>
+        <field name="diagnosis">Post-filler follow-up - satisfactory</field>
+        <field name="state">signed</field>
+        <field name="signed_by" ref="base.user_admin"/>
+        <field name="signed_at">2025-11-05 11:30:00</field>
+    </record>
+
+    <record id="demo_record_06" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_2"/>
+        <field name="visit_date">2025-12-01 09:00:00</field>
+        <field name="subjective"><![CDATA[<p>Interested in botox for forehead lines.</p>]]></field>
+        <field name="state">draft</field>
+    </record>
+
+    <!-- Patient 3 (陳志豪): 3 records -->
+    <record id="demo_record_07" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_3"/>
+        <field name="visit_date">2025-09-15 10:00:00</field>
+        <field name="subjective"><![CDATA[<p>Patient concerned about double chin. Requests treatment options.</p>]]></field>
+        <field name="objective"><![CDATA[<p>Moderate submental fat. Good skin elasticity for age. BMI 26.</p>]]></field>
+        <field name="assessment"><![CDATA[<p>Candidate for deoxycholic acid injection or cryolipolysis.</p>]]></field>
+        <field name="plan"><![CDATA[<p>Discussed options. Patient prefers cryolipolysis. Schedule treatment.</p>]]></field>
+        <field name="diagnosis">Submental fat - consultation</field>
+        <field name="vital_height">178</field>
+        <field name="vital_weight">82</field>
+        <field name="vital_bp_systolic">130</field>
+        <field name="vital_bp_diastolic">85</field>
+        <field name="vital_pulse">76</field>
+        <field name="vital_temp">36.6</field>
+        <field name="state">signed</field>
+        <field name="signed_by" ref="base.user_admin"/>
+        <field name="signed_at">2025-09-15 11:00:00</field>
+    </record>
+
+    <record id="demo_record_08" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_3"/>
+        <field name="visit_date">2025-10-01 14:00:00</field>
+        <field name="subjective"><![CDATA[<p>Cryolipolysis treatment day. No contraindications.</p>]]></field>
+        <field name="objective"><![CDATA[<p>Treatment area marked. Pre-treatment photos taken.</p>]]></field>
+        <field name="assessment"><![CDATA[<p>Treatment completed without complications. 45-minute session.</p>]]></field>
+        <field name="plan"><![CDATA[<p>Massage treatment area for 2 minutes post-procedure. Follow-up in 8 weeks.</p>]]></field>
+        <field name="diagnosis">Cryolipolysis - submental</field>
+        <field name="state">signed</field>
+        <field name="signed_by" ref="base.user_admin"/>
+        <field name="signed_at">2025-10-01 15:30:00</field>
+    </record>
+
+    <record id="demo_record_09" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_3"/>
+        <field name="visit_date">2025-12-05 10:00:00</field>
+        <field name="subjective"><![CDATA[<p>8-week follow-up. Patient notices visible reduction.</p>]]></field>
+        <field name="objective"><![CDATA[<p>Approximately 25% reduction in submental fat volume. Before/after photos compared.</p>]]></field>
+        <field name="state">in_progress</field>
+    </record>
+
+    <!-- Patient 4 (張雅婷): 3 records -->
+    <record id="demo_record_10" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_4"/>
+        <field name="visit_date">2025-11-10 15:00:00</field>
+        <field name="subjective"><![CDATA[<p>Requests skin brightening treatment for pigmentation on cheeks.</p>]]></field>
+        <field name="objective"><![CDATA[<p>Bilateral melasma patches. Fitzpatrick skin type IV.</p>]]></field>
+        <field name="assessment"><![CDATA[<p>Melasma - moderate. Chemical peel and topical treatment recommended.</p>]]></field>
+        <field name="plan"><![CDATA[<p>Start with gentle chemical peel. Prescribe hydroquinone 4% cream. Note: patient allergic to latex - use nitrile gloves.</p>]]></field>
+        <field name="diagnosis">Melasma - bilateral cheeks</field>
+        <field name="vital_bp_systolic">110</field>
+        <field name="vital_bp_diastolic">70</field>
+        <field name="vital_pulse">65</field>
+        <field name="vital_temp">36.3</field>
+        <field name="state">signed</field>
+        <field name="signed_by" ref="base.user_admin"/>
+        <field name="signed_at">2025-11-10 16:00:00</field>
+    </record>
+
+    <record id="demo_record_11" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_4"/>
+        <field name="visit_date">2025-11-25 10:00:00</field>
+        <field name="subjective"><![CDATA[<p>2-week follow-up. Slight improvement noticed. No irritation from cream.</p>]]></field>
+        <field name="objective"><![CDATA[<p>Mild lightening observed. No adverse reaction to hydroquinone.</p>]]></field>
+        <field name="assessment"><![CDATA[<p>Good response. Continue current regimen.</p>]]></field>
+        <field name="plan"><![CDATA[<p>Continue hydroquinone 4%. Second chemical peel in 2 weeks. Strict sun protection.</p>]]></field>
+        <field name="diagnosis">Melasma follow-up - improving</field>
+        <field name="state">signed</field>
+        <field name="signed_by" ref="base.user_admin"/>
+        <field name="signed_at">2025-11-25 10:30:00</field>
+    </record>
+
+    <record id="demo_record_12" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_4"/>
+        <field name="visit_date">2025-12-08 14:00:00</field>
+        <field name="subjective"><![CDATA[<p>Second chemical peel session.</p>]]></field>
+        <field name="state">draft</field>
+    </record>
+
+    <!-- Patient 5 (李建宏): 3 records -->
+    <record id="demo_record_13" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_5"/>
+        <field name="visit_date">2025-11-20 11:00:00</field>
+        <field name="subjective"><![CDATA[<p>First consultation. Wants to address dark circles under eyes.</p>]]></field>
+        <field name="objective"><![CDATA[<p>Tear trough hollowing bilateral. Mild allergic shiners. Young skin, good elasticity.</p>]]></field>
+        <field name="assessment"><![CDATA[<p>Suitable for tear trough filler. HA filler recommended.</p>]]></field>
+        <field name="plan"><![CDATA[<p>Schedule HA filler treatment for tear troughs. 0.5ml per side. Topical anesthesia.</p>]]></field>
+        <field name="diagnosis">Tear trough hollowing - bilateral</field>
+        <field name="vital_height">170</field>
+        <field name="vital_weight">65</field>
+        <field name="vital_bp_systolic">118</field>
+        <field name="vital_bp_diastolic">75</field>
+        <field name="vital_pulse">70</field>
+        <field name="vital_temp">36.5</field>
+        <field name="state">signed</field>
+        <field name="signed_by" ref="base.user_admin"/>
+        <field name="signed_at">2025-11-20 12:00:00</field>
+    </record>
+
+    <record id="demo_record_14" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_5"/>
+        <field name="visit_date">2025-12-03 09:00:00</field>
+        <field name="subjective"><![CDATA[<p>Treatment day for tear trough filler.</p>]]></field>
+        <field name="objective"><![CDATA[<p>Topical anesthesia applied. Treatment area cleaned and marked.</p>]]></field>
+        <field name="assessment"><![CDATA[<p>Filler injected 0.5ml per side using cannula technique. Immediate improvement visible.</p>]]></field>
+        <field name="plan"><![CDATA[<p>Cold compress for 10 minutes. Avoid strenuous exercise 24h. Follow-up in 2 weeks.</p>]]></field>
+        <field name="diagnosis">Tear trough filler - treatment</field>
+        <field name="state">in_progress</field>
+    </record>
+
+    <record id="demo_record_15" model="medical.record">
+        <field name="patient_id" ref="woow_medical_patient.demo_patient_5"/>
+        <field name="visit_date">2025-12-15 10:00:00</field>
+        <field name="subjective"><![CDATA[<p>2-week follow-up after tear trough filler. Scheduling for review.</p>]]></field>
+        <field name="state">draft</field>
+    </record>
+
+</odoo>

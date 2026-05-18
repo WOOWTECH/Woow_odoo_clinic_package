@@ -25,8 +25,12 @@ Woow Medical - Patient Management
         'security/ir.model.access.csv',
         # Data
         'data/medical_patient_data.xml',
+        # Views
+        'views/medical_patient_views.xml',
+        'views/medical_patient_menus.xml',
     ],
     'demo': [
+        'demo/medical_patient_demo.xml',
     ],
     'application': True,
     'installable': True,

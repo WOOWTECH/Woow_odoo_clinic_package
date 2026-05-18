@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="demo_patient_1" model="medical.patient">
+        <field name="name">王小明</field>
+        <field name="phone">0912345678</field>
+        <field name="email">wang.xiaoming@example.com</field>
+        <field name="gender">male</field>
+        <field name="birthday">1985-03-15</field>
+        <field name="blood_type">a</field>
+        <field name="allergies">Penicillin 過敏</field>
+        <field name="emergency_name">王大明</field>
+        <field name="emergency_phone">0922333444</field>
+        <field name="emergency_relation">Father</field>
+    </record>
+
+    <record id="demo_patient_2" model="medical.patient">
+        <field name="name">林美玲</field>
+        <field name="phone">0923456789</field>
+        <field name="email">lin.meiling@example.com</field>
+        <field name="gender">female</field>
+        <field name="birthday">1990-07-22</field>
+        <field name="blood_type">b</field>
+        <field name="chronic_diseases">Mild asthma</field>
+        <field name="medication_history">Salbutamol inhaler PRN</field>
+        <field name="emergency_name">林志偉</field>
+        <field name="emergency_phone">0933444555</field>
+        <field name="emergency_relation">Husband</field>
+    </record>
+
+    <record id="demo_patient_3" model="medical.patient">
+        <field name="name">陳志豪</field>
+        <field name="phone">0934567890</field>
+        <field name="gender">male</field>
+        <field name="birthday">1978-11-08</field>
+        <field name="blood_type">o</field>
+        <field name="surgery_history">Appendectomy (2010)</field>
+        <field name="emergency_name">陳淑芬</field>
+        <field name="emergency_phone">0944555666</field>
+        <field name="emergency_relation">Wife</field>
+    </record>
+
+    <record id="demo_patient_4" model="medical.patient">
+        <field name="name">張雅婷</field>
+        <field name="phone">0945678901</field>
+        <field name="email">chang.yating@example.com</field>
+        <field name="gender">female</field>
+        <field name="birthday">1995-01-30</field>
+        <field name="blood_type">ab</field>
+        <field name="allergies">Latex 過敏, Sulfa drugs 過敏</field>
+        <field name="emergency_name">張志強</field>
+        <field name="emergency_phone">0955666777</field>
+        <field name="emergency_relation">Brother</field>
+    </record>
+
+    <record id="demo_patient_5" model="medical.patient">
+        <field name="name">李建宏</field>
+        <field name="phone">0956789012</field>
+        <field name="gender">male</field>
+        <field name="birthday">2000-05-18</field>
+        <field name="blood_type">a</field>
+        <field name="emergency_name">李淑惠</field>
+        <field name="emergency_phone">0966777888</field>
+        <field name="emergency_relation">Mother</field>
+    </record>
+
+</odoo>

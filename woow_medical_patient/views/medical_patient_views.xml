@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================ -->
+    <!-- Form View (modeled after hr.employee.form)                   -->
+    <!-- ============================================================ -->
+    <record id="medical_patient_view_form" model="ir.ui.view">
+        <field name="name">medical.patient.form</field>
+        <field name="model">medical.patient</field>
+        <field name="arch" type="xml">
+            <form string="Patient">
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <field name="image_1920" widget="image"
+                           class="oe_avatar"
+                           options='{"preview_image": "image_128"}'/>
+                    <div class="oe_title">
+                        <label for="medical_no"/>
+                        <h2>
+                            <field name="medical_no" placeholder="New"/>
+                        </h2>
+                        <label for="name" string="Patient Name"/>
+                        <h1>
+                            <field name="name" placeholder="Patient Name" required="1"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group string="Contact">
+                            <field name="phone" widget="phone"/>
+                            <field name="mobile" widget="phone"/>
+                            <field name="email" widget="email"/>
+                        </group>
+                        <group string="Identification">
+                            <field name="national_id"/>
+                            <field name="nhi_card_no"/>
+                            <field name="company_id"
+                                   groups="base.group_multi_company"
+                                   options="{'no_create': True}"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <!-- Tab 1: Basic Info -->
+                        <page string="Basic Information" name="basic_info">
+                            <group>
+                                <group string="Personal">
+                                    <field name="birthday"/>
+                                    <field name="age"/>
+                                    <field name="gender"/>
+                                    <field name="blood_type"/>
+                                </group>
+                                <group string="Emergency Contact">
+                                    <field name="emergency_name"/>
+                                    <field name="emergency_phone" widget="phone"/>
+                                    <field name="emergency_relation"/>
+                                </group>
+                            </group>
+                            <group string="Address">
+                                <field name="street" string="Street"/>
+                                <field name="street2" string="Street 2"/>
+                                <field name="city"/>
+                                <field name="state_id"
+                                       options="{'no_create': True}"
+                                       domain="[('country_id', '=?', country_id)]"/>
+                                <field name="zip"/>
+                                <field name="country_id"
+                                       options="{'no_create': True}"/>
+                            </group>
+                        </page>
+
+                        <!-- Tab 2: Medical History -->
+                        <page string="Medical History" name="medical_history">
+                            <group>
+                                <field name="allergies" placeholder="Known allergies..."/>
+                            </group>
+                            <group>
+                                <field name="chronic_diseases" placeholder="Chronic disease history..."/>
+                            </group>
+                            <group>
+                                <field name="medication_history" placeholder="Long-term medications..."/>
+                            </group>
+                            <group>
+                                <field name="surgery_history" placeholder="Past surgical procedures..."/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- List / Tree View                                             -->
+    <!-- ============================================================ -->
+    <record id="medical_patient_view_list" model="ir.ui.view">
+        <field name="name">medical.patient.list</field>
+        <field name="model">medical.patient</field>
+        <field name="arch" type="xml">
+            <list string="Patients">
+                <field name="medical_no"/>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="gender"/>
+                <field name="age"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- Search View                                                  -->
+    <!-- ============================================================ -->
+    <record id="medical_patient_view_search" model="ir.ui.view">
+        <field name="name">medical.patient.search</field>
+        <field name="model">medical.patient</field>
+        <field name="arch" type="xml">
+            <search string="Search Patients">
+                <field name="name" string="Name / Phone / No."
+                       filter_domain="[
+                           '|', '|',
+                           ('name', 'ilike', self),
+                           ('phone', 'ilike', self),
+                           ('medical_no', 'ilike', self),
+                       ]"/>
+                <field name="medical_no"/>
+                <field name="phone"/>
+                <separator/>
+                <filter name="filter_male" string="Male"
+                        domain="[('gender', '=', 'male')]"/>
+                <filter name="filter_female" string="Female"
+                        domain="[('gender', '=', 'female')]"/>
+                <separator/>
+                <filter name="filter_has_allergies" string="Has Allergies"
+                        domain="[('allergies', '!=', False)]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_gender" string="Gender"
+                            context="{'group_by': 'gender'}"/>
+                    <filter name="groupby_create_date" string="Registration Month"
+                            context="{'group_by': 'create_date:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- Kanban View (modeled after hr.employee.kanban)               -->
+    <!-- ============================================================ -->
+    <record id="medical_patient_view_kanban" model="ir.ui.view">
+        <field name="name">medical.patient.kanban</field>
+        <field name="model">medical.patient</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="medical_no"/>
+                <field name="phone"/>
+                <field name="image_128"/>
+                <templates>
+                    <t t-name="card">
+                        <aside>
+                            <field name="image_128" widget="image" alt="Patient"/>
+                        </aside>
+                        <main>
+                            <field name="name" class="fw-bold fs-5"/>
+                            <field name="medical_no"/>
+                            <field name="phone" widget="phone"/>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- Action                                                       -->
+    <!-- ============================================================ -->
+    <record id="medical_patient_action" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="res_model">medical.patient</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="search_view_id" ref="medical_patient_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first patient
+            </p>
+            <p>
+                Register new patients to manage their medical records.
+            </p>
+        </field>
+    </record>
+
+</odoo>

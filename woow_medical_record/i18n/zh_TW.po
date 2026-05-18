@@ -1,0 +1,648 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * woow_medical_record
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-16 00:00+0000\n"
+"PO-Revision-Date: 2025-11-16 00:00+0000\n"
+"Last-Translator: WoowTech <info@woowtech.io>\n"
+"Language-Team: Chinese (Traditional) <>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: woow_medical_record
+#: model:ir.model,name:woow_medical_record.model_medical_record
+msgid "Medical Record"
+msgstr "病歷"
+
+#. module: woow_medical_record
+#: model:ir.model,name:woow_medical_record.model_medical_record_access_log
+msgid "Medical Record Access Log"
+msgstr "病歷存取紀錄"
+
+#. module: woow_medical_record
+#: model:ir.sequence,name:woow_medical_record.seq_medical_record
+msgid "Medical Record"
+msgstr "病歷編號"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__name
+msgid "Record No."
+msgstr "病歷號"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__name
+msgid "Auto-generated record number (YYYYMMDD-001)."
+msgstr "自動產生的病歷號 (YYYYMMDD-001)。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__patient_id
+msgid "Patient"
+msgstr "病患"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__patient_id
+msgid "The patient this record belongs to."
+msgstr "此病歷所屬的病患。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__partner_id
+msgid "Related Partner"
+msgstr "關聯夥伴"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__physician_id
+msgid "Physician"
+msgstr "醫師"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__physician_id
+msgid "The physician responsible for this record."
+msgstr "負責此病歷的醫師。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__visit_date
+msgid "Visit Date"
+msgstr "就診日期"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__visit_date
+msgid "Date and time of the visit."
+msgstr "就診日期與時間。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__subjective
+msgid "Subjective (S)"
+msgstr "主訴 (S)"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__subjective
+msgid "Chief complaint and subjective symptoms."
+msgstr "主訴與主觀症狀。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__objective
+msgid "Objective (O)"
+msgstr "客觀 (O)"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__objective
+msgid "Objective findings and observations."
+msgstr "客觀檢查結果與觀察。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__assessment
+msgid "Assessment (A)"
+msgstr "評估 (A)"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__assessment
+msgid "Clinical assessment and diagnosis discussion."
+msgstr "臨床評估與診斷討論。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__plan
+msgid "Plan (P)"
+msgstr "計畫 (P)"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__plan
+msgid "Treatment plan and follow-up."
+msgstr "治療計畫與後續追蹤。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__diagnosis
+msgid "Diagnosis"
+msgstr "診斷"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__diagnosis
+msgid "Free-text diagnosis (ICD-10 planned for future)."
+msgstr "自由文字診斷（未來規劃支援 ICD-10）。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__vital_height
+msgid "Height (cm)"
+msgstr "身高 (cm)"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__vital_height
+msgid "Patient height in centimeters."
+msgstr "病患身高（公分）。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__vital_weight
+msgid "Weight (kg)"
+msgstr "體重 (kg)"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__vital_weight
+msgid "Patient weight in kilograms."
+msgstr "病患體重（公斤）。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__vital_bp_systolic
+msgid "BP Systolic"
+msgstr "收縮壓"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__vital_bp_systolic
+msgid "Systolic blood pressure (mmHg)."
+msgstr "收縮壓 (mmHg)。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__vital_bp_diastolic
+msgid "BP Diastolic"
+msgstr "舒張壓"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__vital_bp_diastolic
+msgid "Diastolic blood pressure (mmHg)."
+msgstr "舒張壓 (mmHg)。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__vital_pulse
+msgid "Pulse"
+msgstr "脈搏"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__vital_pulse
+msgid "Pulse rate (bpm)."
+msgstr "脈搏（次/分鐘）。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__vital_temp
+msgid "Temperature (°C)"
+msgstr "體溫 (°C)"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__vital_temp
+msgid "Body temperature in Celsius."
+msgstr "體溫（攝氏）。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__attachment_ids
+msgid "Attachments"
+msgstr "附件"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__attachment_ids
+msgid "Before/after photos, lab reports, etc."
+msgstr "術前術後照片、檢驗報告等。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__state
+msgid "Status"
+msgstr "狀態"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__state
+msgid "Record workflow status."
+msgstr "病歷流程狀態。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields.selection,name:woow_medical_record.selection__medical_record__state__draft
+msgid "Draft"
+msgstr "草稿"
+
+#. module: woow_medical_record
+#: model:ir.model.fields.selection,name:woow_medical_record.selection__medical_record__state__in_progress
+msgid "In Progress"
+msgstr "進行中"
+
+#. module: woow_medical_record
+#: model:ir.model.fields.selection,name:woow_medical_record.selection__medical_record__state__signed
+msgid "Signed"
+msgstr "已簽核"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__signed_by
+msgid "Signed By"
+msgstr "簽核者"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__signed_by
+msgid "User who signed this record."
+msgstr "簽核此病歷的使用者。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__signed_at
+msgid "Signed At"
+msgstr "簽核時間"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record__signed_at
+msgid "Timestamp when the record was signed."
+msgstr "病歷簽核的時間戳記。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__company_id
+msgid "Company"
+msgstr "公司"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__access_log_ids
+msgid "Access Logs"
+msgstr "存取紀錄"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record__access_log_count
+msgid "Access Log Count"
+msgstr "存取紀錄數"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record_access_log__record_id
+msgid "Medical Record"
+msgstr "病歷"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record_access_log__record_id
+msgid "The medical record this log entry belongs to."
+msgstr "此紀錄所屬的病歷。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record_access_log__user_id
+msgid "User"
+msgstr "使用者"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record_access_log__user_id
+msgid "User who performed the action."
+msgstr "執行操作的使用者。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record_access_log__action
+msgid "Action"
+msgstr "動作"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record_access_log__action
+msgid "Type of access or action performed."
+msgstr "存取或操作的類型。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields.selection,name:woow_medical_record.selection__medical_record_access_log__action__view
+msgid "View"
+msgstr "檢視"
+
+#. module: woow_medical_record
+#: model:ir.model.fields.selection,name:woow_medical_record.selection__medical_record_access_log__action__write
+msgid "Write"
+msgstr "寫入"
+
+#. module: woow_medical_record
+#: model:ir.model.fields.selection,name:woow_medical_record.selection__medical_record_access_log__action__sign
+msgid "Sign"
+msgstr "簽核"
+
+#. module: woow_medical_record
+#: model:ir.model.fields.selection,name:woow_medical_record.selection__medical_record_access_log__action__unsign
+msgid "Unsign"
+msgstr "取消簽核"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_record_access_log__note
+msgid "Note"
+msgstr "備註"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_record_access_log__note
+msgid "Additional detail about the action."
+msgstr "關於操作的額外說明。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Viewed SOAP content from form view."
+msgstr "從表單檢視了 SOAP 內容。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Only draft records can be started."
+msgstr "僅草稿狀態的病歷可以開始。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Only in-progress records can be signed."
+msgstr "僅進行中的病歷可以簽核。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "At least one SOAP field (S/O/A/P) must be filled before signing."
+msgstr "簽核前至少需填寫一個 SOAP 欄位（主訴/客觀/評估/計畫）。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Record signed."
+msgstr "病歷已簽核。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Only signed records can be reset to draft."
+msgstr "僅已簽核的病歷可以退回草稿。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Record reset to draft."
+msgstr "病歷已退回草稿。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Access Logs"
+msgstr "存取紀錄"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record_access_log.py:0
+#, python-format
+msgid "Audit log entries cannot be modified."
+msgstr "審計日誌紀錄不可修改。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record_access_log.py:0
+#, python-format
+msgid "Audit log entries cannot be deleted."
+msgstr "審計日誌紀錄不可刪除。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_patient.py:0
+#, python-format
+msgid "Medical Records"
+msgstr "病歷"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_patient__record_ids
+msgid "Medical Records"
+msgstr "病歷"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_patient__record_ids
+msgid "All medical records for this patient."
+msgstr "此病患的所有病歷。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_patient__record_count
+msgid "Record Count"
+msgstr "病歷數"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_patient__record_count
+msgid "Number of medical records."
+msgstr "病歷數量。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_patient__last_visit_date
+msgid "Last Visit"
+msgstr "最後就診"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_patient__last_visit_date
+msgid "Date of the most recent visit."
+msgstr "最近一次就診日期。"
+
+#. module: woow_medical_record
+#: sql_constraint:medical.record:
+msgid "Record number must be unique per company."
+msgstr "同一公司內病歷號不可重複。"
+
+#. module: woow_medical_record
+#: model:ir.ui.menu,name:woow_medical_record.medical_record_menu
+msgid "Medical Records"
+msgstr "病歷"
+
+#. module: woow_medical_record
+#: model:ir.ui.menu,name:woow_medical_record.medical_record_menu_all
+msgid "All Records"
+msgstr "全部病歷"
+
+#. module: woow_medical_record
+#: model:ir.ui.menu,name:woow_medical_record.medical_record_menu_my
+msgid "My Records"
+msgstr "我的病歷"
+
+#. module: woow_medical_record
+#: model:ir.ui.menu,name:woow_medical_record.medical_record_menu_logs
+msgid "Access Logs"
+msgstr "存取紀錄"
+
+#. module: woow_medical_record
+#: model:ir.actions.act_window,name:woow_medical_record.medical_record_action
+msgid "Medical Records"
+msgstr "病歷列表"
+
+#. module: woow_medical_record
+#: model:ir.actions.act_window,name:woow_medical_record.medical_record_action_my
+msgid "My Records"
+msgstr "我的病歷"
+
+#. module: woow_medical_record
+#: model:ir.actions.act_window,name:woow_medical_record.medical_record_log_action
+msgid "Access Logs"
+msgstr "存取紀錄"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Medical Record"
+msgstr "病歷"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Start"
+msgstr "開始"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Sign"
+msgstr "簽核"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Reset to Draft"
+msgstr "退回草稿"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "New"
+msgstr "新建"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Subjective (S)"
+msgstr "主訴 (S)"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Chief complaint and subjective symptoms..."
+msgstr "主訴與主觀症狀..."
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Objective (O)"
+msgstr "客觀 (O)"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Vital Signs"
+msgstr "生命徵象"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Objective Findings"
+msgstr "客觀檢查結果"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Objective findings and observations..."
+msgstr "客觀檢查結果與觀察..."
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Assessment (A)"
+msgstr "評估 (A)"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Diagnosis..."
+msgstr "診斷..."
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Assessment Detail"
+msgstr "評估詳情"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Clinical assessment..."
+msgstr "臨床評估..."
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Plan (P)"
+msgstr "計畫 (P)"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Treatment plan and follow-up..."
+msgstr "治療計畫與後續追蹤..."
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_form
+msgid "Attachments"
+msgstr "附件"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_search
+msgid "Search Medical Records"
+msgstr "搜尋病歷"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_search
+msgid "Record No. / Patient / Diagnosis"
+msgstr "病歷號 / 病患 / 診斷"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_search
+msgid "My Records"
+msgstr "我的病歷"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_search
+msgid "Today"
+msgstr "今日"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_search
+msgid "This Week"
+msgstr "本週"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_search
+msgid "This Month"
+msgstr "本月"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_search
+msgid "Group By"
+msgstr "群組"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_search
+msgid "Physician"
+msgstr "醫師"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_search
+msgid "Status"
+msgstr "狀態"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_search
+msgid "Visit Date (Day)"
+msgstr "就診日期（日）"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_search
+msgid "Visit Date (Week)"
+msgstr "就診日期（週）"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_view_search
+msgid "Visit Date (Month)"
+msgstr "就診日期（月）"
+
+#. module: woow_medical_record
+#: model_terms:ir.actions.act_window,help:woow_medical_record.medical_record_action
+msgid "Create your first medical record"
+msgstr "建立您的第一筆病歷"
+
+#. module: woow_medical_record
+#: model_terms:ir.actions.act_window,help:woow_medical_record.medical_record_action
+msgid "Record patient visits using the SOAP documentation method."
+msgstr "使用 SOAP 格式記錄病患就診資料。"
+
+#. module: woow_medical_record
+#: model_terms:ir.actions.act_window,help:woow_medical_record.medical_record_action_my
+msgid "No records yet"
+msgstr "尚無病歷"
+
+#. module: woow_medical_record
+#: model_terms:ir.actions.act_window,help:woow_medical_record.medical_record_action_my
+msgid "Medical records where you are the physician will appear here."
+msgstr "您為負責醫師的病歷將顯示在此。"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_log_view_list
+msgid "Timestamp"
+msgstr "時間戳記"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_log_view_search
+msgid "Search Access Logs"
+msgstr "搜尋存取紀錄"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_record_log_view_search
+msgid "Record"
+msgstr "病歷"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_patient_view_form_inherit_record
+msgid "Records"
+msgstr "病歷"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_patient_view_form_inherit_record
+msgid "Medical Records"
+msgstr "病歷"

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Root Menu: Medical Management (sequence=80) -->
+    <menuitem id="medical_root_menu"
+              name="Medical"
+              sequence="80"
+              groups="group_medical_user"/>
+
+    <!-- Sub-menu: Patients -->
+    <menuitem id="medical_patient_menu"
+              name="Patients"
+              parent="medical_root_menu"
+              sequence="10"/>
+
+    <!-- Menu Item: Patient List -->
+    <menuitem id="medical_patient_menu_list"
+              name="Patients"
+              parent="medical_patient_menu"
+              action="medical_patient_action"
+              sequence="10"/>
+
+    <!-- Sub-menu: Configuration (placeholder for v1) -->
+    <menuitem id="medical_config_menu"
+              name="Configuration"
+              parent="medical_root_menu"
+              sequence="90"
+              groups="group_medical_admin"/>
+
+</odoo>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Extend Patient Form: add stat button for records -->
+    <record id="medical_patient_view_form_inherit_record" model="ir.ui.view">
+        <field name="name">medical.patient.form.inherit.record</field>
+        <field name="model">medical.patient</field>
+        <field name="inherit_id" ref="woow_medical_patient.medical_patient_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Add stat button -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_records"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-file-text-o">
+                    <field name="record_count"
+                           widget="statinfo"
+                           string="Records"/>
+                </button>
+            </xpath>
+            <!-- Add records tab in notebook -->
+            <xpath expr="//page[@name='medical_history']" position="after">
+                <page string="Medical Records" name="medical_records">
+                    <field name="record_ids" readonly="1">
+                        <list>
+                            <field name="name"/>
+                            <field name="visit_date"/>
+                            <field name="physician_id"/>
+                            <field name="state"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extend Patient List: add last_visit_date and record_count -->
+    <record id="medical_patient_view_list_inherit_record" model="ir.ui.view">
+        <field name="name">medical.patient.list.inherit.record</field>
+        <field name="model">medical.patient</field>
+        <field name="inherit_id" ref="woow_medical_patient.medical_patient_view_list"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='age']" position="after">
+                <field name="last_visit_date" optional="show"/>
+                <field name="record_count" string="Records" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extend Patient Kanban: add last_visit_date -->
+    <record id="medical_patient_view_kanban_inherit_record" model="ir.ui.view">
+        <field name="name">medical.patient.kanban.inherit.record</field>
+        <field name="model">medical.patient</field>
+        <field name="inherit_id" ref="woow_medical_patient.medical_patient_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='phone']" position="after">
+                <field name="last_visit_date"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

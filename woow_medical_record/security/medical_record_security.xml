@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================ -->
+    <!-- Record Rules: medical.record                                 -->
+    <!-- ============================================================ -->
+
+    <!-- Global: Multi-Company isolation (applies to all users) -->
+    <record id="medical_record_comp_rule" model="ir.rule">
+        <field name="name">Medical Record: Multi-Company</field>
+        <field name="model_id" ref="model_medical_record"/>
+        <field name="domain_force">[
+            '|',
+            ('company_id', '=', False),
+            ('company_id', 'in', company_ids),
+        ]</field>
+        <field name="global" eval="True"/>
+    </record>
+
+    <!-- Physician: can only see own records -->
+    <record id="medical_record_physician_rule" model="ir.rule">
+        <field name="name">Medical Record: Physician Own Records</field>
+        <field name="model_id" ref="model_medical_record"/>
+        <field name="domain_force">[('physician_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('woow_medical_patient.group_medical_physician'))]"/>
+    </record>
+
+    <!-- Admin: can see all records (company filtering via global rule) -->
+    <record id="medical_record_admin_rule" model="ir.rule">
+        <field name="name">Medical Record: Admin All Records</field>
+        <field name="model_id" ref="model_medical_record"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('woow_medical_patient.group_medical_admin'))]"/>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- Record Rules: medical.record.access.log                      -->
+    <!-- ============================================================ -->
+
+    <!-- Global: Multi-Company via parent record -->
+    <record id="medical_record_log_comp_rule" model="ir.rule">
+        <field name="name">Medical Record Log: Multi-Company</field>
+        <field name="model_id" ref="model_medical_record_access_log"/>
+        <field name="domain_force">[
+            '|',
+            ('record_id.company_id', '=', False),
+            ('record_id.company_id', 'in', company_ids),
+        ]</field>
+        <field name="global" eval="True"/>
+    </record>
+
+</odoo>

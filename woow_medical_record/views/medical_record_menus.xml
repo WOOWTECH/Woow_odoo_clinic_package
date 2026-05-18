@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Sub-menu: Medical Records (under existing root menu) -->
+    <menuitem id="medical_record_menu"
+              name="Medical Records"
+              parent="woow_medical_patient.medical_root_menu"
+              sequence="20"/>
+
+    <!-- Menu Item: All Records -->
+    <menuitem id="medical_record_menu_all"
+              name="All Records"
+              parent="medical_record_menu"
+              action="medical_record_action"
+              sequence="10"/>
+
+    <!-- Menu Item: My Records -->
+    <menuitem id="medical_record_menu_my"
+              name="My Records"
+              parent="medical_record_menu"
+              action="medical_record_action_my"
+              sequence="20"/>
+
+    <!-- Menu Item: Access Logs (admin only) -->
+    <menuitem id="medical_record_menu_logs"
+              name="Access Logs"
+              parent="medical_record_menu"
+              action="medical_record_log_action"
+              sequence="30"
+              groups="woow_medical_patient.group_medical_admin"/>
+
+</odoo>

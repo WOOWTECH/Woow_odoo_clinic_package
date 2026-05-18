@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_medical_record_user,medical.record.user,model_medical_record,woow_medical_patient.group_medical_user,1,0,0,0
+access_medical_record_physician,medical.record.physician,model_medical_record,woow_medical_patient.group_medical_physician,1,1,1,0
+access_medical_record_admin,medical.record.admin,model_medical_record,woow_medical_patient.group_medical_admin,1,1,1,0
+access_medical_record_log_user,medical.record.access.log.user,model_medical_record_access_log,woow_medical_patient.group_medical_user,0,0,1,0
+access_medical_record_log_physician,medical.record.access.log.physician,model_medical_record_access_log,woow_medical_patient.group_medical_physician,0,0,1,0
+access_medical_record_log_admin,medical.record.access.log.admin,model_medical_record_access_log,woow_medical_patient.group_medical_admin,1,0,1,0
