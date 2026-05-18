@@ -1,5 +1,7 @@
 # Part of Woow Medical. See LICENSE file for full copyright and licensing details.
 
+from datetime import timedelta
+
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
 
@@ -190,12 +192,50 @@ class MedicalRecord(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        """Generate daily record number (YYYYMMDD-001) using ir.sequence with date range."""
+        """Generate daily record number (YYYYMMDD-001) using ir.sequence with daily date range."""
         for vals in vals_list:
             if not vals.get('name'):
                 visit_date = vals.get('visit_date') or fields.Datetime.now()
+                if isinstance(visit_date, str):
+                    visit_date = fields.Datetime.from_string(visit_date)
                 company_id = vals.get('company_id', self.env.company.id)
                 company = self.env['res.company'].browse(company_id)
+                seq = self.env['ir.sequence'].search([
+                    ('code', '=', 'medical.record'),
+                    '|',
+                    ('company_id', '=', company.id),
+                    ('company_id', '=', False),
+                ], order='company_id', limit=1)
+                # Ensure a daily date range exists so counter resets each day
+                visit_day = visit_date.date()
+                date_range = self.env['ir.sequence.date_range'].search([
+                    ('sequence_id', '=', seq.id),
+                    ('date_from', '=', visit_day),
+                    ('date_to', '=', visit_day),
+                ], limit=1)
+                if not date_range:
+                    # Shrink or remove any broader range covering this day
+                    broader = self.env['ir.sequence.date_range'].search([
+                        ('sequence_id', '=', seq.id),
+                        ('date_from', '<=', visit_day),
+                        ('date_to', '>=', visit_day),
+                    ])
+                    for br in broader:
+                        if br.date_from < visit_day and br.date_to > visit_day:
+                            # Split: keep the before-part, create after-part later if needed
+                            br.write({'date_to': visit_day - timedelta(days=1)})
+                        elif br.date_from == visit_day:
+                            br.write({'date_from': visit_day + timedelta(days=1)})
+                        elif br.date_to == visit_day:
+                            br.write({'date_to': visit_day - timedelta(days=1)})
+                        else:
+                            br.unlink()
+                    self.env['ir.sequence.date_range'].sudo().create({
+                        'sequence_id': seq.id,
+                        'date_from': visit_day,
+                        'date_to': visit_day,
+                        'number_next': 1,
+                    })
                 vals['name'] = (
                     self.env['ir.sequence']
                     .with_company(company)
@@ -204,13 +244,13 @@ class MedicalRecord(models.Model):
                 )
         return super().create(vals_list)
 
-    def read(self, fields_list=None, load='_classic_read'):
+    def read(self, fields=None, load='_classic_read'):
         """Log view access when SOAP fields are read in form view context."""
-        result = super().read(fields_list=fields_list, load=load)
+        result = super().read(fields=fields, load=load)
         if (
             self.env.context.get('medical_form_view')
-            and fields_list
-            and SOAP_FIELDS.intersection(fields_list)
+            and fields
+            and SOAP_FIELDS.intersection(fields)
         ):
             log_model = self.env['medical.record.access.log']
             for record in self:

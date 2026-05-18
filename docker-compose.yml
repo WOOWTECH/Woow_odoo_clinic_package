@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16
+    container_name: odoo-clinic-db
+    environment:
+      - POSTGRES_USER=odooclinic
+      - POSTGRES_PASSWORD=odooclinic
+      - POSTGRES_DB=odoo-clinic
+    volumes:
+      - odoo-clinic-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odooclinic -d odoo-clinic"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  web:
+    image: odoo:18
+    container_name: odoo-clinic-web
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "9103:8069"
+    volumes:
+      - odoo-clinic-web-data:/var/lib/odoo
+      - ./woow_medical_patient:/mnt/extra-addons/woow_medical_patient
+      - ./woow_medical_record:/mnt/extra-addons/woow_medical_record
+      - ./config/odoo.conf:/etc/odoo/odoo.conf
+    restart: unless-stopped
+
+volumes:
+  odoo-clinic-db-data:
+  odoo-clinic-web-data:
