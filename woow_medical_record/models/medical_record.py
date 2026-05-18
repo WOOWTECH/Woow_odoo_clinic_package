@@ -244,6 +244,15 @@ class MedicalRecord(models.Model):
                 )
         return super().create(vals_list)
 
+    def write(self, vals):
+        """Block direct state manipulation — must use action methods."""
+        if 'state' in vals and not self.env.context.get('_medical_workflow'):
+            raise UserError(
+                _('State changes must go through the workflow buttons '
+                  '(Start / Sign / Reset to Draft).')
+            )
+        return super().write(vals)
+
     def read(self, fields=None, load='_classic_read'):
         """Log view access when SOAP fields are read in form view context."""
         result = super().read(fields=fields, load=load)
@@ -254,6 +263,9 @@ class MedicalRecord(models.Model):
         ):
             log_model = self.env['medical.record.access.log']
             for record in self:
+                # Skip unsaved records (NewId) to avoid constraint violations
+                if not isinstance(record.id, int) or record.id <= 0:
+                    continue
                 log_model.create({
                     'record_id': record.id,
                     'action': 'view',
@@ -272,7 +284,7 @@ class MedicalRecord(models.Model):
                 raise UserError(
                     _('Only draft records can be started.')
                 )
-            record.state = 'in_progress'
+            record.with_context(_medical_workflow=True).state = 'in_progress'
 
     def action_sign(self):
         """Transition from in_progress to signed. Requires at least one SOAP field."""
@@ -290,7 +302,7 @@ class MedicalRecord(models.Model):
                 raise ValidationError(
                     _('At least one SOAP field (S/O/A/P) must be filled before signing.')
                 )
-            record.write({
+            record.with_context(_medical_workflow=True).write({
                 'state': 'signed',
                 'signed_by': self.env.uid,
                 'signed_at': fields.Datetime.now(),
@@ -303,7 +315,11 @@ class MedicalRecord(models.Model):
             })
 
     def action_reset_to_draft(self):
-        """Transition from signed back to draft. Writes audit log."""
+        """Transition from signed back to draft. Admin-only. Writes audit log."""
+        if not self.env.user.has_group('woow_medical_patient.group_medical_admin'):
+            raise UserError(
+                _('Only medical administrators can reset records to draft.')
+            )
         for record in self:
             if record.state != 'signed':
                 raise UserError(
@@ -315,7 +331,7 @@ class MedicalRecord(models.Model):
                 'action': 'unsign',
                 'note': _('Record reset to draft.'),
             })
-            record.write({
+            record.with_context(_medical_workflow=True).write({
                 'state': 'draft',
                 'signed_by': False,
                 'signed_at': False,
