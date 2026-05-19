@@ -1,0 +1,11 @@
+{
+  "name": "e2e-permissions",
+  "private": true,
+  "scripts": {
+    "test": "PLAYWRIGHT_HTML_OPEN=never npx playwright test",
+    "test:debug": "PLAYWRIGHT_HTML_OPEN=never npx playwright test --debug=cli"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0"
+  }
+}
