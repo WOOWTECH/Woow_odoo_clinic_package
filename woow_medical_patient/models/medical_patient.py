@@ -50,13 +50,11 @@ class MedicalPatient(models.Model):
     national_id = fields.Char(
         string='National ID',
         size=10,
-        groups='woow_medical_patient.group_medical_pii',
-        help='National identification number (restricted to PII group).',
+        help='National identification number.',
     )
     nhi_card_no = fields.Char(
         string='NHI Card No.',
-        groups='woow_medical_patient.group_medical_pii',
-        help='National Health Insurance card number (restricted to PII group).',
+        help='National Health Insurance card number.',
     )
 
     # --- Biometrics ---

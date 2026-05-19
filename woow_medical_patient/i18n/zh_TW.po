@@ -42,11 +42,6 @@ msgid "Medical Administrator"
 msgstr "醫療管理者"
 
 #. module: woow_medical_patient
-#: model:res.groups,name:woow_medical_patient.group_medical_pii
-msgid "Medical PII Access"
-msgstr "醫療個資存取"
-
-#. module: woow_medical_patient
 #: model:ir.sequence,name:woow_medical_patient.seq_medical_patient
 msgid "Medical Patient"
 msgstr "病患編號"
@@ -83,8 +78,8 @@ msgstr "身分證字號"
 
 #. module: woow_medical_patient
 #: model:ir.model.fields,help:woow_medical_patient.field_medical_patient__national_id
-msgid "National identification number (restricted to PII group)."
-msgstr "身分證字號（僅限個資權限群組檢視）。"
+msgid "National identification number."
+msgstr "身分證字號。"
 
 #. module: woow_medical_patient
 #: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__nhi_card_no
@@ -93,8 +88,8 @@ msgstr "健保卡號"
 
 #. module: woow_medical_patient
 #: model:ir.model.fields,help:woow_medical_patient.field_medical_patient__nhi_card_no
-msgid "National Health Insurance card number (restricted to PII group)."
-msgstr "健保卡卡號（僅限個資權限群組檢視）。"
+msgid "National Health Insurance card number."
+msgstr "健保卡卡號。"
 
 #. module: woow_medical_patient
 #: model:ir.model.fields,field_description:woow_medical_patient.field_medical_patient__gender
@@ -360,8 +355,3 @@ msgstr "醫師。可建立及管理病歷。"
 #: model:res.groups,comment:woow_medical_patient.group_medical_admin
 msgid "Full access to all medical data and configuration."
 msgstr "擁有所有醫療資料與設定的完整存取權限。"
-
-#. module: woow_medical_patient
-#: model:res.groups,comment:woow_medical_patient.group_medical_pii
-msgid "Independent group granting access to sensitive PII fields (national ID, NHI card)."
-msgstr "獨立群組，授權存取敏感個資欄位（身分證字號、健保卡號）。"

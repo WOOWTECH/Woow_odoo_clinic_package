@@ -552,25 +552,18 @@ def main():
         rid = _create_soap_record()
         admin_call("medical.record", "unlink", [[rid]])
 
-    def test_pii_basic_user_cannot_read_national_id():
+    def test_basic_user_can_read_national_id():
         pid = admin_call("medical.patient", "create", [[{
             "name": "[L1] PII Test Patient",
             "national_id": "A123456789",
         }]])
         pid = pid[0] if isinstance(pid, list) else pid
         _p_ids.append(pid)
-        # Odoo raises AccessError when non-PII user tries to read groups-restricted field
-        rpc.call_as("test_basic_user", "medical.patient", "read", [[pid]], {
-            "fields": ["name", "national_id"]
-        })
-
-    def test_pii_user_can_read_national_id():
-        pid = _p_ids[-1]  # patient with national_id
-        p = rpc.call_as("test_pii_user", "medical.patient", "read", [[pid]], {
+        p = rpc.call_as("test_basic_user", "medical.patient", "read", [[pid]], {
             "fields": ["name", "national_id"]
         })[0]
         assert p.get("national_id") == "A123456789", \
-            f"PII user should see national_id, got: {p.get('national_id')}"
+            f"Basic user should see national_id, got: {p.get('national_id')}"
 
     def test_physician_cannot_modify_other_record():
         # Create as physician A
@@ -606,7 +599,7 @@ def main():
         ], {"fields": ["name"]})
         names = [g["name"] for g in groups]
         for expected in ["Medical User", "Medical Physician",
-                          "Medical Administrator", "Medical PII Access"]:
+                          "Medical Administrator"]:
             assert expected in names, f"Missing group: {expected}"
 
     def test_physician_a_sees_only_own():
@@ -626,11 +619,10 @@ def main():
     tr.expect_error("Basic user cannot create record", test_basic_user_cannot_create_record, "")
     tr.expect_error("Basic user cannot write record", test_basic_user_cannot_write_record, "")
     tr.expect_error("No role can delete record", test_no_role_can_delete_record, "")
-    tr.expect_error("PII: basic_user cannot read national_id", test_pii_basic_user_cannot_read_national_id, "national_id")
-    tr.run_test("PII: pii_user CAN read national_id", test_pii_user_can_read_national_id)
+    tr.run_test("Basic user CAN read national_id", test_basic_user_can_read_national_id)
     tr.expect_error("Physician B cannot modify A's record", test_physician_cannot_modify_other_record, "")
     tr.run_test("Admin can modify any record", test_admin_can_modify_any_record)
-    tr.run_test("All 4 security groups exist", test_security_groups_exist)
+    tr.run_test("All 3 security groups exist", test_security_groups_exist)
     tr.run_test("Physician A sees only own records", test_physician_a_sees_only_own)
 
     # ══════════════════════════════════════════════════════════════

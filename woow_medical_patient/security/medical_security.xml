@@ -29,10 +29,13 @@
         <field name="implied_ids" eval="[(4, ref('group_medical_physician'))]"/>
     </record>
 
+    <!-- Deprecated: PII group removed from Medical category so the
+         Settings dropdown renders correctly. Record kept to avoid
+         ir.model.data orphan on upgrade; will be deleted in a future version. -->
     <record id="group_medical_pii" model="res.groups">
-        <field name="name">Medical PII Access</field>
-        <field name="comment">Independent group granting access to sensitive PII fields (national ID, NHI card).</field>
-        <field name="category_id" ref="module_category_medical"/>
+        <field name="name">Medical PII Access (Deprecated)</field>
+        <field name="comment">Deprecated – no longer used.</field>
+        <field name="category_id" eval="False"/>
     </record>
 
     <!-- Multi-Company Record Rule: medical.patient -->

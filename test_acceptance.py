@@ -251,11 +251,11 @@ def test_security_groups(uid):
     group_names = [g["name"] for g in groups]
     print(f"  Medical groups: {group_names}")
 
-    expected = ["Medical User", "Medical Physician", "Medical Administrator", "Medical PII Access"]
+    expected = ["Medical User", "Medical Physician", "Medical Administrator"]
     for name in expected:
         assert name in group_names, f"Missing group: {name}"
 
-    print("  PASS: All 4 security groups exist")
+    print("  PASS: All 3 security groups exist")
     return True
 
 

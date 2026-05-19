@@ -1,7 +1,7 @@
 /**
  * Layer 2: Browser/UI E2E Tests — Playwright
  * Comprehensive Odoo 18 UI testing for woow_medical_patient & woow_medical_record.
- * ~25 tests covering login, navigation, CRUD, workflow, PII, views.
+ * ~25 tests covering login, navigation, CRUD, workflow, field visibility, views.
  */
 const { chromium } = require('playwright');
 
@@ -515,71 +515,41 @@ async function navigateToAction(page, xmlId) {
     }
 
     // ════════════════════════════════════════════════════════════
-    // 2.6 PII Visibility (login as non-PII user, using new contexts)
+    // 2.6 PII Fields Visibility (all medical users can see these)
     // ════════════════════════════════════════════════════════════
-    console.log('\n--- 2.6 PII Visibility ---');
+    console.log('\n--- 2.6 PII Fields Visibility ---');
 
-    // Login as basic_user in new context
     try {
       const { ctx: basicCtx, pg: basicPage } = await loginNewContext(browser, 'test_basic_user', 'test_basic_user');
-
-      // Navigate to patients
       await basicPage.goto(`${TARGET_URL}/web#action=woow_medical_patient.medical_patient_action`, { waitUntil: 'domcontentloaded' });
       await basicPage.waitForTimeout(3000);
 
-      // Click first patient
       const firstRow = basicPage.locator('.o_data_row').first();
       if (await firstRow.isVisible({ timeout: 5000 })) {
         await firstRow.click();
         await basicPage.waitForTimeout(2000);
 
-        // Check national_id field NOT visible
         const nidField = basicPage.locator('.o_field_widget[name="national_id"]');
         const nidVisible = await nidField.isVisible({ timeout: 2000 }).catch(() => false);
-        if (!nidVisible) {
-          ok('PII: national_id hidden for non-PII user');
+        if (nidVisible) {
+          ok('national_id visible for basic medical user');
         } else {
-          fail('PII: national_id hidden', 'field is visible to non-PII user');
+          fail('national_id visible for basic medical user', 'field not found');
         }
 
-        // Check nhi_card_no field NOT visible
         const nhiField = basicPage.locator('.o_field_widget[name="nhi_card_no"]');
         const nhiVisible = await nhiField.isVisible({ timeout: 1000 }).catch(() => false);
-        if (!nhiVisible) {
-          ok('PII: nhi_card_no hidden for non-PII user');
+        if (nhiVisible) {
+          ok('nhi_card_no visible for basic medical user');
         } else {
-          fail('PII: nhi_card_no hidden', 'field is visible to non-PII user');
+          fail('nhi_card_no visible for basic medical user', 'field not found');
         }
       } else {
-        fail('PII test', 'no patient rows visible');
+        fail('PII fields test', 'no patient rows visible');
       }
       await basicCtx.close();
     } catch (e) {
-      fail('PII visibility test', e.message);
-    }
-
-    // Login as PII user in new context and verify fields ARE visible
-    try {
-      const { ctx: piiCtx, pg: piiPage } = await loginNewContext(browser, 'test_pii_user', 'test_pii_user');
-      await piiPage.goto(`${TARGET_URL}/web#action=woow_medical_patient.medical_patient_action`, { waitUntil: 'domcontentloaded' });
-      await piiPage.waitForTimeout(3000);
-
-      const firstRow = piiPage.locator('.o_data_row').first();
-      if (await firstRow.isVisible({ timeout: 5000 })) {
-        await firstRow.click();
-        await piiPage.waitForTimeout(2000);
-
-        const nidField = piiPage.locator('.o_field_widget[name="national_id"]');
-        const nidVisible = await nidField.isVisible({ timeout: 3000 }).catch(() => false);
-        if (nidVisible) {
-          ok('PII: national_id visible for PII user');
-        } else {
-          fail('PII: national_id visible for PII user', 'field not found');
-        }
-      }
-      await piiCtx.close();
-    } catch (e) {
-      fail('PII user visibility', e.message);
+      fail('PII fields visibility test', e.message);
     }
 
     // Test: Search filters work (use the already-open admin page)

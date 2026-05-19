@@ -142,7 +142,6 @@ USER_PROFILES = {
         "name": "Test Physician A",
         "groups": [
             "woow_medical_patient.group_medical_physician",
-            "woow_medical_patient.group_medical_pii",
         ],
     },
     "test_physician_b": {
@@ -157,18 +156,10 @@ USER_PROFILES = {
             "woow_medical_patient.group_medical_user",
         ],
     },
-    "test_pii_user": {
-        "name": "Test PII User",
-        "groups": [
-            "woow_medical_patient.group_medical_user",
-            "woow_medical_patient.group_medical_pii",
-        ],
-    },
     "test_med_admin": {
         "name": "Test Med Admin",
         "groups": [
             "woow_medical_patient.group_medical_admin",
-            "woow_medical_patient.group_medical_pii",
         ],
     },
 }
