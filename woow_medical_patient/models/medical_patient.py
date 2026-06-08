@@ -3,6 +3,7 @@
 from datetime import date
 
 from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
 
 
 class MedicalPatient(models.Model):
@@ -141,6 +142,16 @@ class MedicalPatient(models.Model):
         for patient in self:
             patient.related_partner_count = 1 if patient.partner_id else 0
 
+    @api.constrains('birthday')
+    def _check_birthday(self):
+        """Prevent future dates as birthday."""
+        today = date.today()
+        for patient in self:
+            if patient.birthday and patient.birthday > today:
+                raise ValidationError(
+                    _('Birthday cannot be in the future.')
+                )
+
     @api.depends('birthday')
     def _compute_age(self):
         """Compute patient age from birthday."""
@@ -148,10 +159,10 @@ class MedicalPatient(models.Model):
         for patient in self:
             if patient.birthday:
                 birthday = patient.birthday
-                patient.age = (
+                patient.age = max(0, (
                     today.year - birthday.year
                     - ((today.month, today.day) < (birthday.month, birthday.day))
-                )
+                ))
             else:
                 patient.age = 0
 

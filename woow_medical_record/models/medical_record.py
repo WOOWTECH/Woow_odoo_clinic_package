@@ -4,6 +4,7 @@ from datetime import timedelta
 
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError, ValidationError
+from odoo.tools import html2plaintext
 
 SOAP_FIELDS = {'subjective', 'objective', 'assessment', 'plan'}
 
@@ -194,27 +195,44 @@ class MedicalRecord(models.Model):
     def create(self, vals_list):
         """Generate daily record number (YYYYMMDD-001) using ir.sequence with daily date range."""
         for vals in vals_list:
+            # Enforce new records start as draft (prevent workflow bypass via API)
+            if vals.get('state') and vals['state'] != 'draft':
+                raise UserError(
+                    _('New records must be created in draft state.')
+                )
             if not vals.get('name'):
                 visit_date = vals.get('visit_date') or fields.Datetime.now()
                 if isinstance(visit_date, str):
                     visit_date = fields.Datetime.from_string(visit_date)
                 company_id = vals.get('company_id', self.env.company.id)
                 company = self.env['res.company'].browse(company_id)
+                # Ensure a daily date range exists so counter resets each day.
+                # Use SELECT FOR UPDATE to prevent race conditions when
+                # multiple physicians create the first record of the day.
+                visit_day = visit_date.date()
                 seq = self.env['ir.sequence'].search([
                     ('code', '=', 'medical.record'),
                     '|',
                     ('company_id', '=', company.id),
                     ('company_id', '=', False),
                 ], order='company_id', limit=1)
-                # Ensure a daily date range exists so counter resets each day
-                visit_day = visit_date.date()
+                if not seq:
+                    raise UserError(
+                        _('Medical record sequence not found. '
+                          'Please contact the administrator.')
+                    )
+                # Lock the sequence row to serialize concurrent access
+                self.env.cr.execute(
+                    "SELECT id FROM ir_sequence WHERE id = %s FOR UPDATE",
+                    (seq.id,)
+                )
                 date_range = self.env['ir.sequence.date_range'].search([
                     ('sequence_id', '=', seq.id),
                     ('date_from', '=', visit_day),
                     ('date_to', '=', visit_day),
                 ], limit=1)
                 if not date_range:
-                    # Shrink or remove any broader range covering this day
+                    # Remove or shrink any broader range that covers this day
                     broader = self.env['ir.sequence.date_range'].search([
                         ('sequence_id', '=', seq.id),
                         ('date_from', '<=', visit_day),
@@ -222,8 +240,15 @@ class MedicalRecord(models.Model):
                     ])
                     for br in broader:
                         if br.date_from < visit_day and br.date_to > visit_day:
-                            # Split: keep the before-part, create after-part later if needed
+                            # Split: keep before-part, create after-part
+                            original_date_to = br.date_to
                             br.write({'date_to': visit_day - timedelta(days=1)})
+                            self.env['ir.sequence.date_range'].sudo().create({
+                                'sequence_id': seq.id,
+                                'date_from': visit_day + timedelta(days=1),
+                                'date_to': original_date_to,
+                                'number_next': 1,
+                            })
                         elif br.date_from == visit_day:
                             br.write({'date_from': visit_day + timedelta(days=1)})
                         elif br.date_to == visit_day:
@@ -245,12 +270,26 @@ class MedicalRecord(models.Model):
         return super().create(vals_list)
 
     def write(self, vals):
-        """Block direct state manipulation — must use action methods."""
+        """Block direct state manipulation and protect signed records."""
         if 'state' in vals and not self.env.context.get('_medical_workflow'):
             raise UserError(
                 _('State changes must go through the workflow buttons '
                   '(Start / Sign / Reset to Draft).')
             )
+        # Protect clinical fields on signed records
+        protected_fields = (
+            SOAP_FIELDS | {'diagnosis', 'attachment_ids',
+            'vital_height', 'vital_weight', 'vital_bp_systolic',
+            'vital_bp_diastolic', 'vital_pulse', 'vital_temp',
+            'patient_id', 'physician_id', 'visit_date'}
+        )
+        if any(f in vals for f in protected_fields):
+            for rec in self:
+                if rec.state == 'signed':
+                    raise UserError(
+                        _('Cannot modify a signed record. '
+                          'Reset to draft first.')
+                    )
         return super().write(vals)
 
     def read(self, fields=None, load='_classic_read'):
@@ -293,9 +332,17 @@ class MedicalRecord(models.Model):
                 raise UserError(
                     _('Only in-progress records can be signed.')
                 )
-            # Validate at least one SOAP field is filled
+            # Only the responsible physician or admin can sign
+            is_admin = self.env.user.has_group(
+                'woow_medical_patient.group_medical_admin'
+            )
+            if record.physician_id.id != self.env.uid and not is_admin:
+                raise UserError(
+                    _('Only the responsible physician can sign this record.')
+                )
+            # Validate at least one SOAP field has real content (strip HTML tags)
             soap_filled = any(
-                getattr(record, field)
+                html2plaintext(getattr(record, field) or '').strip()
                 for field in SOAP_FIELDS
             )
             if not soap_filled:

@@ -50,58 +50,65 @@
                     </div>
                     <group>
                         <group>
-                            <field name="patient_id"/>
-                            <field name="physician_id"/>
+                            <field name="patient_id" readonly="state == 'signed'"/>
+                            <field name="physician_id" readonly="state == 'signed'"/>
                         </group>
                         <group>
-                            <field name="visit_date"/>
+                            <field name="visit_date" readonly="state == 'signed'"/>
                             <field name="company_id"
                                    groups="base.group_multi_company"
-                                   options="{'no_create': True}"/>
+                                   options="{'no_create': True}"
+                                   readonly="state == 'signed'"/>
                         </group>
                     </group>
 
                     <notebook>
                         <!-- Tab S: Subjective -->
                         <page string="Subjective (S)" name="subjective">
-                            <field name="subjective" placeholder="Chief complaint and subjective symptoms..."/>
+                            <field name="subjective" placeholder="Chief complaint and subjective symptoms..."
+                                   readonly="state == 'signed'"/>
                         </page>
 
                         <!-- Tab O: Objective -->
                         <page string="Objective (O)" name="objective">
                             <group string="Vital Signs">
                                 <group>
-                                    <field name="vital_height"/>
-                                    <field name="vital_weight"/>
-                                    <field name="vital_temp"/>
+                                    <field name="vital_height" readonly="state == 'signed'"/>
+                                    <field name="vital_weight" readonly="state == 'signed'"/>
+                                    <field name="vital_temp" readonly="state == 'signed'"/>
                                 </group>
                                 <group>
-                                    <field name="vital_bp_systolic"/>
-                                    <field name="vital_bp_diastolic"/>
-                                    <field name="vital_pulse"/>
+                                    <field name="vital_bp_systolic" readonly="state == 'signed'"/>
+                                    <field name="vital_bp_diastolic" readonly="state == 'signed'"/>
+                                    <field name="vital_pulse" readonly="state == 'signed'"/>
                                 </group>
                             </group>
                             <separator string="Objective Findings"/>
-                            <field name="objective" placeholder="Objective findings and observations..."/>
+                            <field name="objective" placeholder="Objective findings and observations..."
+                                   readonly="state == 'signed'"/>
                         </page>
 
                         <!-- Tab A: Assessment -->
                         <page string="Assessment (A)" name="assessment">
                             <group>
-                                <field name="diagnosis" placeholder="Diagnosis..."/>
+                                <field name="diagnosis" placeholder="Diagnosis..."
+                                       readonly="state == 'signed'"/>
                             </group>
                             <separator string="Assessment Detail"/>
-                            <field name="assessment" placeholder="Clinical assessment..."/>
+                            <field name="assessment" placeholder="Clinical assessment..."
+                                   readonly="state == 'signed'"/>
                         </page>
 
                         <!-- Tab P: Plan -->
                         <page string="Plan (P)" name="plan">
-                            <field name="plan" placeholder="Treatment plan and follow-up..."/>
+                            <field name="plan" placeholder="Treatment plan and follow-up..."
+                                   readonly="state == 'signed'"/>
                         </page>
 
                         <!-- Tab: Attachments -->
                         <page string="Attachments" name="attachments">
-                            <field name="attachment_ids" widget="many2many_binary"/>
+                            <field name="attachment_ids" widget="many2many_binary"
+                                   readonly="state == 'signed'"/>
                         </page>
                     </notebook>
                 </sheet>

@@ -15,7 +15,7 @@ class MedicalRecordAccessLog(models.Model):
         'medical.record',
         string='Medical Record',
         required=True,
-        ondelete='cascade',
+        ondelete='restrict',
         index=True,
         help='The medical record this log entry belongs to.',
     )
