@@ -161,21 +161,25 @@
         <field name="name">medical.patient.kanban</field>
         <field name="model">medical.patient</field>
         <field name="arch" type="xml">
-            <kanban class="o_kanban_mobile">
+            <kanban sample="1">
                 <field name="id"/>
-                <field name="name"/>
-                <field name="medical_no"/>
-                <field name="phone"/>
-                <field name="image_128"/>
+                <field name="avatar_128"/>
                 <templates>
-                    <t t-name="card">
-                        <aside>
-                            <field name="image_128" widget="image" alt="Patient"/>
+                    <t t-name="card" class="flex-row">
+                        <aside class="o_kanban_aside_full">
+                            <div class="o_kanban_image_fill position-relative w-100">
+                                <field name="avatar_128" alt="Patient image"
+                                       class="h-100" widget="image"
+                                       options="{'img_class': 'object-fit-cover'}"/>
+                            </div>
                         </aside>
-                        <main>
-                            <field name="name" class="fw-bold fs-5"/>
-                            <field name="medical_no"/>
-                            <field name="phone" widget="phone"/>
+                        <main class="ps-2 ps-md-0">
+                            <div class="mb-1">
+                                <field name="name" class="mb-0 fw-bold fs-5 text-truncate"/>
+                                <field name="medical_no" class="text-muted"/>
+                            </div>
+                            <field name="phone" widget="phone" class="text-truncate"/>
+                            <field name="email" widget="email" class="text-truncate"/>
                         </main>
                     </t>
                 </templates>
