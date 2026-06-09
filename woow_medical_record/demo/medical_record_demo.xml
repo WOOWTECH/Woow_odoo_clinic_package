@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo>
+<odoo noupdate="1">
 
     <!-- ============================================================ -->
     <!-- Demo Medical Records: 15 records across 3 states             -->

@@ -178,6 +178,32 @@ class MedicalRecord(models.Model):
     )
 
     # ------------------------------------------------------------------
+    # Constraints
+    # ------------------------------------------------------------------
+
+    @api.constrains(
+        'vital_height', 'vital_weight', 'vital_bp_systolic',
+        'vital_bp_diastolic', 'vital_pulse', 'vital_temp',
+    )
+    def _check_vital_signs(self):
+        """Prevent negative vital sign values."""
+        vital_fields = {
+            'vital_height': _('Height'),
+            'vital_weight': _('Weight'),
+            'vital_bp_systolic': _('Systolic BP'),
+            'vital_bp_diastolic': _('Diastolic BP'),
+            'vital_pulse': _('Pulse'),
+            'vital_temp': _('Temperature'),
+        }
+        for record in self:
+            for field_name, label in vital_fields.items():
+                value = record[field_name]
+                if value and value < 0:
+                    raise ValidationError(
+                        _('%s cannot be negative.', label)
+                    )
+
+    # ------------------------------------------------------------------
     # Compute
     # ------------------------------------------------------------------
 
@@ -281,7 +307,8 @@ class MedicalRecord(models.Model):
             SOAP_FIELDS | {'diagnosis', 'attachment_ids',
             'vital_height', 'vital_weight', 'vital_bp_systolic',
             'vital_bp_diastolic', 'vital_pulse', 'vital_temp',
-            'patient_id', 'physician_id', 'visit_date'}
+            'patient_id', 'physician_id', 'visit_date',
+            'company_id', 'name'}
         )
         if any(f in vals for f in protected_fields):
             for rec in self:
@@ -293,19 +320,18 @@ class MedicalRecord(models.Model):
         return super().write(vals)
 
     def read(self, fields=None, load='_classic_read'):
-        """Log view access when SOAP fields are read in form view context."""
+        """Log view access when SOAP fields are read in form view (single record only)."""
         result = super().read(fields=fields, load=load)
+        # Only log for single-record reads (form view), skip batch reads (list/calendar/pivot)
         if (
-            self.env.context.get('medical_form_view')
+            len(self) == 1
+            and self.env.context.get('medical_form_view')
             and fields
             and SOAP_FIELDS.intersection(fields)
         ):
-            log_model = self.env['medical.record.access.log']
-            for record in self:
-                # Skip unsaved records (NewId) to avoid constraint violations
-                if not isinstance(record.id, int) or record.id <= 0:
-                    continue
-                log_model.create({
+            record = self
+            if isinstance(record.id, int) and record.id > 0:
+                self.env['medical.record.access.log'].sudo().create({
                     'record_id': record.id,
                     'action': 'view',
                     'note': _('Viewed SOAP content from form view.'),

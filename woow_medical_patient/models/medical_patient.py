@@ -26,6 +26,11 @@ class MedicalPatient(models.Model):
             'CHECK(national_id IS NULL OR LENGTH(national_id) <= 10)',
             'National ID must be at most 10 characters.',
         ),
+        (
+            'national_id_company_uniq',
+            'UNIQUE(company_id, national_id)',
+            'National ID must be unique per company.',
+        ),
     ]
 
     # --- Delegation ---
