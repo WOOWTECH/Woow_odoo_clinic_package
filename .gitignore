@@ -26,6 +26,9 @@ filestore/
 tests/e2e-permissions/test-results/
 tests/e2e-permissions/playwright-report/
 
+# Internal development plans
+docs/plans/
+
 # Internal development images
 .vibe-images/
 
