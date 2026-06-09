@@ -389,3 +389,63 @@ msgstr "醫師。可建立及管理病歷。"
 #: model:res.groups,comment:woow_medical_patient.group_medical_admin
 msgid "Full access to all medical data and configuration."
 msgstr "擁有所有醫療資料與設定的完整存取權限。"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_res_partner__patient_ids
+msgid "Patients"
+msgstr "病患"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,help:woow_medical_patient.field_res_partner__patient_ids
+msgid "Medical patient records linked to this contact."
+msgstr "與此聯絡人關聯的病患紀錄。"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields,field_description:woow_medical_patient.field_res_partner__patient_count
+msgid "Patient Count"
+msgstr "病患數"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields.selection,name:woow_medical_patient.selection__medical_patient__blood_type__a
+msgid "A"
+msgstr "A 型"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields.selection,name:woow_medical_patient.selection__medical_patient__blood_type__b
+msgid "B"
+msgstr "B 型"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields.selection,name:woow_medical_patient.selection__medical_patient__blood_type__ab
+msgid "AB"
+msgstr "AB 型"
+
+#. module: woow_medical_patient
+#: model:ir.model.fields.selection,name:woow_medical_patient.selection__medical_patient__blood_type__o
+msgid "O"
+msgstr "O 型"
+
+#. module: woow_medical_patient
+#: model:ir.ui.menu,name:woow_medical_patient.medical_patient_menu_list
+msgid "Patients"
+msgstr "病患列表"
+
+#. module: woow_medical_patient
+#: model:ir.rule,name:woow_medical_patient.medical_patient_comp_rule
+msgid "Medical Patient: Multi-Company"
+msgstr "病患：多公司"
+
+#. module: woow_medical_patient
+#: model:ir.module.category,description:woow_medical_patient.module_category_medical
+msgid "Medical clinic management modules."
+msgstr "醫療診所管理模組。"
+
+#. module: woow_medical_patient
+#: model:res.groups,name:woow_medical_patient.group_medical_pii
+msgid "Medical PII Access (Deprecated)"
+msgstr "醫療個資存取（已棄用）"
+
+#. module: woow_medical_patient
+#: model:res.groups,comment:woow_medical_patient.group_medical_pii
+msgid "Deprecated – no longer used."
+msgstr "已棄用 – 不再使用。"

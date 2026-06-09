@@ -724,3 +724,23 @@ msgstr "病歷"
 #: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_patient_view_form_inherit_record
 msgid "Medical Records"
 msgstr "病歷"
+
+#. module: woow_medical_record
+#: model:ir.rule,name:woow_medical_record.medical_record_comp_rule
+msgid "Medical Record: Multi-Company"
+msgstr "病歷：多公司"
+
+#. module: woow_medical_record
+#: model:ir.rule,name:woow_medical_record.medical_record_physician_rule
+msgid "Medical Record: Physician Own Records"
+msgstr "病歷：醫師自有病歷"
+
+#. module: woow_medical_record
+#: model:ir.rule,name:woow_medical_record.medical_record_admin_rule
+msgid "Medical Record: Admin All Records"
+msgstr "病歷：管理者全部病歷"
+
+#. module: woow_medical_record
+#: model:ir.rule,name:woow_medical_record.medical_record_log_comp_rule
+msgid "Medical Record Log: Multi-Company"
+msgstr "病歷存取紀錄：多公司"
