@@ -319,6 +319,84 @@ msgstr "關於操作的額外說明。"
 #. module: woow_medical_record
 #: code:addons/woow_medical_record/models/medical_record.py:0
 #, python-format
+msgid "%s cannot be negative."
+msgstr "%s 不可為負值。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Height"
+msgstr "身高"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Weight"
+msgstr "體重"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Systolic BP"
+msgstr "收縮壓"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Diastolic BP"
+msgstr "舒張壓"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Pulse"
+msgstr "脈搏"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Temperature"
+msgstr "體溫"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "New records must be created in draft state."
+msgstr "新病歷必須以草稿狀態建立。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Medical record sequence not found. Please contact the administrator."
+msgstr "找不到病歷編號序列，請聯繫系統管理員。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "State changes must go through the workflow buttons (Start / Sign / Reset to Draft)."
+msgstr "狀態變更必須透過流程按鈕（開始 / 簽核 / 退回草稿）。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Cannot modify a signed record. Reset to draft first."
+msgstr "無法修改已簽核的病歷，請先退回草稿。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Only the responsible physician can sign this record."
+msgstr "僅負責醫師可以簽核此病歷。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "Only medical administrators can reset records to draft."
+msgstr "僅醫療管理者可以將病歷退回草稿。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
 msgid "Viewed SOAP content from form view."
 msgstr "從表單檢視了 SOAP 內容。"
 

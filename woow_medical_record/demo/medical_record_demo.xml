@@ -2,7 +2,8 @@
 <odoo noupdate="1">
 
     <!-- ============================================================ -->
-    <!-- Demo Medical Records: 15 records across 3 states             -->
+    <!-- Demo Medical Records: 15 records                             -->
+    <!-- All created as draft, then transitioned via workflow actions  -->
     <!-- References demo patients from woow_medical_patient           -->
     <!-- ============================================================ -->
 
@@ -21,9 +22,6 @@
         <field name="vital_bp_diastolic">80</field>
         <field name="vital_pulse">72</field>
         <field name="vital_temp">36.5</field>
-        <field name="state">signed</field>
-        <field name="signed_by" ref="base.user_admin"/>
-        <field name="signed_at">2025-11-01 10:30:00</field>
     </record>
 
     <record id="demo_record_02" model="medical.record">
@@ -34,9 +32,6 @@
         <field name="assessment"><![CDATA[<p>Good recovery. Ready for second session in 4 weeks.</p>]]></field>
         <field name="plan"><![CDATA[<p>Schedule second laser session. Continue moisturizer and sunscreen SPF50.</p>]]></field>
         <field name="diagnosis">Post-laser follow-up</field>
-        <field name="state">signed</field>
-        <field name="signed_by" ref="base.user_admin"/>
-        <field name="signed_at">2025-11-15 10:45:00</field>
     </record>
 
     <record id="demo_record_03" model="medical.record">
@@ -44,7 +39,6 @@
         <field name="visit_date">2025-12-10 09:30:00</field>
         <field name="subjective"><![CDATA[<p>Second laser treatment session. No adverse reactions since last visit.</p>]]></field>
         <field name="objective"><![CDATA[<p>Skin texture improved. Scars approximately 40% reduced.</p>]]></field>
-        <field name="state">in_progress</field>
     </record>
 
     <!-- Patient 2 (林美玲): 3 records -->
@@ -60,9 +54,6 @@
         <field name="vital_bp_diastolic">75</field>
         <field name="vital_pulse">68</field>
         <field name="vital_temp">36.4</field>
-        <field name="state">signed</field>
-        <field name="signed_by" ref="base.user_admin"/>
-        <field name="signed_at">2025-10-20 15:00:00</field>
     </record>
 
     <record id="demo_record_05" model="medical.record">
@@ -73,16 +64,12 @@
         <field name="assessment"><![CDATA[<p>Excellent result. No complications.</p>]]></field>
         <field name="plan"><![CDATA[<p>No further treatment needed. Return in 6 months for touch-up if desired.</p>]]></field>
         <field name="diagnosis">Post-filler follow-up - satisfactory</field>
-        <field name="state">signed</field>
-        <field name="signed_by" ref="base.user_admin"/>
-        <field name="signed_at">2025-11-05 11:30:00</field>
     </record>
 
     <record id="demo_record_06" model="medical.record">
         <field name="patient_id" ref="woow_medical_patient.demo_patient_2"/>
         <field name="visit_date">2025-12-01 09:00:00</field>
         <field name="subjective"><![CDATA[<p>Interested in botox for forehead lines.</p>]]></field>
-        <field name="state">draft</field>
     </record>
 
     <!-- Patient 3 (陳志豪): 3 records -->
@@ -100,9 +87,6 @@
         <field name="vital_bp_diastolic">85</field>
         <field name="vital_pulse">76</field>
         <field name="vital_temp">36.6</field>
-        <field name="state">signed</field>
-        <field name="signed_by" ref="base.user_admin"/>
-        <field name="signed_at">2025-09-15 11:00:00</field>
     </record>
 
     <record id="demo_record_08" model="medical.record">
@@ -113,9 +97,6 @@
         <field name="assessment"><![CDATA[<p>Treatment completed without complications. 45-minute session.</p>]]></field>
         <field name="plan"><![CDATA[<p>Massage treatment area for 2 minutes post-procedure. Follow-up in 8 weeks.</p>]]></field>
         <field name="diagnosis">Cryolipolysis - submental</field>
-        <field name="state">signed</field>
-        <field name="signed_by" ref="base.user_admin"/>
-        <field name="signed_at">2025-10-01 15:30:00</field>
     </record>
 
     <record id="demo_record_09" model="medical.record">
@@ -123,7 +104,6 @@
         <field name="visit_date">2025-12-05 10:00:00</field>
         <field name="subjective"><![CDATA[<p>8-week follow-up. Patient notices visible reduction.</p>]]></field>
         <field name="objective"><![CDATA[<p>Approximately 25% reduction in submental fat volume. Before/after photos compared.</p>]]></field>
-        <field name="state">in_progress</field>
     </record>
 
     <!-- Patient 4 (張雅婷): 3 records -->
@@ -139,9 +119,6 @@
         <field name="vital_bp_diastolic">70</field>
         <field name="vital_pulse">65</field>
         <field name="vital_temp">36.3</field>
-        <field name="state">signed</field>
-        <field name="signed_by" ref="base.user_admin"/>
-        <field name="signed_at">2025-11-10 16:00:00</field>
     </record>
 
     <record id="demo_record_11" model="medical.record">
@@ -152,16 +129,12 @@
         <field name="assessment"><![CDATA[<p>Good response. Continue current regimen.</p>]]></field>
         <field name="plan"><![CDATA[<p>Continue hydroquinone 4%. Second chemical peel in 2 weeks. Strict sun protection.</p>]]></field>
         <field name="diagnosis">Melasma follow-up - improving</field>
-        <field name="state">signed</field>
-        <field name="signed_by" ref="base.user_admin"/>
-        <field name="signed_at">2025-11-25 10:30:00</field>
     </record>
 
     <record id="demo_record_12" model="medical.record">
         <field name="patient_id" ref="woow_medical_patient.demo_patient_4"/>
         <field name="visit_date">2025-12-08 14:00:00</field>
         <field name="subjective"><![CDATA[<p>Second chemical peel session.</p>]]></field>
-        <field name="state">draft</field>
     </record>
 
     <!-- Patient 5 (李建宏): 3 records -->
@@ -179,9 +152,6 @@
         <field name="vital_bp_diastolic">75</field>
         <field name="vital_pulse">70</field>
         <field name="vital_temp">36.5</field>
-        <field name="state">signed</field>
-        <field name="signed_by" ref="base.user_admin"/>
-        <field name="signed_at">2025-11-20 12:00:00</field>
     </record>
 
     <record id="demo_record_14" model="medical.record">
@@ -192,14 +162,47 @@
         <field name="assessment"><![CDATA[<p>Filler injected 0.5ml per side using cannula technique. Immediate improvement visible.</p>]]></field>
         <field name="plan"><![CDATA[<p>Cold compress for 10 minutes. Avoid strenuous exercise 24h. Follow-up in 2 weeks.</p>]]></field>
         <field name="diagnosis">Tear trough filler - treatment</field>
-        <field name="state">in_progress</field>
     </record>
 
     <record id="demo_record_15" model="medical.record">
         <field name="patient_id" ref="woow_medical_patient.demo_patient_5"/>
         <field name="visit_date">2025-12-15 10:00:00</field>
         <field name="subjective"><![CDATA[<p>2-week follow-up after tear trough filler. Scheduling for review.</p>]]></field>
-        <field name="state">draft</field>
     </record>
+
+    <!-- ============================================================ -->
+    <!-- Transition records through the workflow using action methods  -->
+    <!-- Records to sign: 01,02,04,05,07,08,10,11,13 (draft→in_progress→signed) -->
+    <!-- Records to start: 03,09,14 (draft→in_progress)              -->
+    <!-- Records stay draft: 06,12,15                                 -->
+    <!-- ============================================================ -->
+
+    <!-- Transition records that should end up as "signed" -->
+    <function model="medical.record" name="action_start">
+        <value eval="[
+            ref('demo_record_01'), ref('demo_record_02'),
+            ref('demo_record_04'), ref('demo_record_05'),
+            ref('demo_record_07'), ref('demo_record_08'),
+            ref('demo_record_10'), ref('demo_record_11'),
+            ref('demo_record_13'),
+        ]"/>
+    </function>
+    <function model="medical.record" name="action_sign">
+        <value eval="[
+            ref('demo_record_01'), ref('demo_record_02'),
+            ref('demo_record_04'), ref('demo_record_05'),
+            ref('demo_record_07'), ref('demo_record_08'),
+            ref('demo_record_10'), ref('demo_record_11'),
+            ref('demo_record_13'),
+        ]"/>
+    </function>
+
+    <!-- Transition records that should end up as "in_progress" -->
+    <function model="medical.record" name="action_start">
+        <value eval="[
+            ref('demo_record_03'), ref('demo_record_09'),
+            ref('demo_record_14'),
+        ]"/>
+    </function>
 
 </odoo>

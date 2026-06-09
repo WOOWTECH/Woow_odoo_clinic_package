@@ -342,6 +342,40 @@ msgid "Patient number must be unique per company."
 msgstr "同一公司內病患編號不可重複。"
 
 #. module: woow_medical_patient
+#: code:addons/woow_medical_patient/models/medical_patient.py:0
+#, python-format
+msgid "Birthday cannot be in the future."
+msgstr "生日不可為未來日期。"
+
+#. module: woow_medical_patient
+#: sql_constraint:medical.patient:
+msgid "National ID must be at most 10 characters."
+msgstr "身分證字號最多 10 個字元。"
+
+#. module: woow_medical_patient
+#: sql_constraint:medical.patient:
+msgid "National ID must be unique per company."
+msgstr "同一公司內身分證字號不可重複。"
+
+#. module: woow_medical_patient
+#: code:addons/woow_medical_patient/models/medical_patient.py:0
+#, python-format
+msgid "Contact"
+msgstr "聯絡資訊"
+
+#. module: woow_medical_patient
+#: code:addons/woow_medical_patient/models/res_partner.py:0
+#, python-format
+msgid "Patient"
+msgstr "病患"
+
+#. module: woow_medical_patient
+#: code:addons/woow_medical_patient/models/res_partner.py:0
+#, python-format
+msgid "Patients"
+msgstr "病患列表"
+
+#. module: woow_medical_patient
 #: model:res.groups,comment:woow_medical_patient.group_medical_user
 msgid "Basic medical staff (reception, nurses). Can read/create patients."
 msgstr "基層醫療人員（櫃台、護理師）。可檢視/建立病患。"

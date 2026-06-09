@@ -210,8 +210,17 @@ class MedicalRecord(models.Model):
     @api.depends('access_log_ids')
     def _compute_access_log_count(self):
         """Compute number of access log entries."""
+        if not self.ids:
+            self.access_log_count = 0
+            return
+        data = self.env['medical.record.access.log'].read_group(
+            domain=[('record_id', 'in', self.ids)],
+            fields=['record_id'],
+            groupby=['record_id'],
+        )
+        mapped = {d['record_id'][0]: d['record_id_count'] for d in data}
         for record in self:
-            record.access_log_count = len(record.access_log_ids)
+            record.access_log_count = mapped.get(record.id, 0)
 
     # ------------------------------------------------------------------
     # CRUD
@@ -296,8 +305,13 @@ class MedicalRecord(models.Model):
         return super().create(vals_list)
 
     def write(self, vals):
-        """Block direct state manipulation and protect signed records."""
-        if 'state' in vals and not self.env.context.get('_medical_workflow'):
+        """Block direct state manipulation and protect signed records.
+
+        State changes are only allowed via _write_state() called from
+        action methods. The context flag '_medical_workflow' is NOT used
+        since it can be injected via JSON-RPC kwargs.
+        """
+        if 'state' in vals:
             raise UserError(
                 _('State changes must go through the workflow buttons '
                   '(Start / Sign / Reset to Draft).')
@@ -318,6 +332,15 @@ class MedicalRecord(models.Model):
                           'Reset to draft first.')
                     )
         return super().write(vals)
+
+    def _write_state(self, vals):
+        """Internal method for workflow state transitions.
+
+        Bypasses the write() state guard by calling super().write()
+        directly. Only called from action_start/action_sign/action_reset_to_draft.
+        Not exposed as a public API method (no @api.model decorator, starts with _).
+        """
+        return super(MedicalRecord, self).write(vals)
 
     def read(self, fields=None, load='_classic_read'):
         """Log view access when SOAP fields are read in form view (single record only)."""
@@ -349,7 +372,7 @@ class MedicalRecord(models.Model):
                 raise UserError(
                     _('Only draft records can be started.')
                 )
-            record.with_context(_medical_workflow=True).state = 'in_progress'
+            record._write_state({'state': 'in_progress'})
 
     def action_sign(self):
         """Transition from in_progress to signed. Requires at least one SOAP field."""
@@ -375,7 +398,7 @@ class MedicalRecord(models.Model):
                 raise ValidationError(
                     _('At least one SOAP field (S/O/A/P) must be filled before signing.')
                 )
-            record.with_context(_medical_workflow=True).write({
+            record._write_state({
                 'state': 'signed',
                 'signed_by': self.env.uid,
                 'signed_at': fields.Datetime.now(),
@@ -404,7 +427,7 @@ class MedicalRecord(models.Model):
                 'action': 'unsign',
                 'note': _('Record reset to draft.'),
             })
-            record.with_context(_medical_workflow=True).write({
+            record._write_state({
                 'state': 'draft',
                 'signed_by': False,
                 'signed_at': False,
