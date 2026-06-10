@@ -200,6 +200,15 @@ class MedicalRecord(models.Model):
                         _('%s cannot be negative.', label)
                     )
 
+    @api.constrains('physician_id')
+    def _check_physician_required(self):
+        """Enforce physician assignment at ORM level."""
+        for record in self:
+            if not record.physician_id:
+                raise ValidationError(
+                    _('A physician must be assigned to the medical record.')
+                )
+
     # ------------------------------------------------------------------
     # Compute
     # ------------------------------------------------------------------

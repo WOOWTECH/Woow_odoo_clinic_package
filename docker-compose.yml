@@ -25,9 +25,21 @@ services:
       - "9103:8069"
     volumes:
       - odoo-clinic-web-data:/var/lib/odoo
+      # Medical modules (this repo)
       - ./woow_medical_patient:/mnt/extra-addons/woow_medical_patient
       - ./woow_medical_physician:/mnt/extra-addons/woow_medical_physician
       - ./woow_medical_record:/mnt/extra-addons/woow_medical_record
+      # Loyalty / Consignment card modules
+      - ../Woow_odoo_loyalty_card_enhance/addons/woow_loyalty_consign:/mnt/extra-addons/woow_loyalty_consign
+      - ../Woow_odoo_loyalty_card_enhance/addons/woow_loyalty_consign_pos:/mnt/extra-addons/woow_loyalty_consign_pos
+      - ../Woow_odoo_loyalty_card_enhance/addons/woow_member_center:/mnt/extra-addons/woow_member_center
+      - ../Woow_odoo_loyalty_card_enhance/addons/woow_mc_consign:/mnt/extra-addons/woow_mc_consign
+      - ../Woow_odoo_loyalty_card_enhance/addons/woow_consign_booking:/mnt/extra-addons/woow_consign_booking
+      # Reservation module
+      - ../Odoo_reservation_module/reservation_module:/mnt/extra-addons/reservation_module
+      # Survey portal module
+      - ../Woow_dev_website_survey_portal:/mnt/extra-addons/woow_dev_website_survey_portal
+      # Config
       - ./config/odoo.conf:/etc/odoo/odoo.conf
     restart: unless-stopped
 
