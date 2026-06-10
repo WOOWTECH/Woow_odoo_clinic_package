@@ -449,3 +449,8 @@ msgstr "醫療個資存取（已棄用）"
 #: model:res.groups,comment:woow_medical_patient.group_medical_pii
 msgid "Deprecated – no longer used."
 msgstr "已棄用 – 不再使用。"
+
+#. module: woow_medical_patient
+#: model:ir.model.constraint,message:woow_medical_patient.constraint_medical_patient_partner_company_uniq
+msgid "Each contact can only have one patient record per company."
+msgstr "每位聯絡人在同一公司只能有一筆患者記錄。"

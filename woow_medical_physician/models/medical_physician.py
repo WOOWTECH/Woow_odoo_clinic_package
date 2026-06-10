@@ -57,6 +57,7 @@ class MedicalPhysician(models.Model):
     specialty_id = fields.Many2one(
         'medical.specialty',
         string='Primary Specialty',
+        ondelete='set null',
         tracking=True,
         help='Primary clinical specialty.',
     )

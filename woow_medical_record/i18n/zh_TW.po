@@ -770,3 +770,9 @@ msgstr "病歷"
 #, python-format
 msgid "A physician must be assigned to the medical record."
 msgstr "病歷必須指定負責醫師。"
+
+#. module: woow_medical_record
+#: code:addons/woow_medical_record/models/medical_record.py:0
+#, python-format
+msgid "The physician must belong to the same company as the medical record."
+msgstr "負責醫師必須與病歷屬於同一公司。"

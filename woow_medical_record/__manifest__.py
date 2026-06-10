@@ -2,7 +2,7 @@
 
 {
     'name': 'Woow 醫療 - 病歷管理',
-    'version': '18.0.1.0.0',
+    'version': '18.0.1.1.0',
     'category': 'Medical',
     'summary': '醫美診所 SOAP 病歷與就診管理',
     'description': """

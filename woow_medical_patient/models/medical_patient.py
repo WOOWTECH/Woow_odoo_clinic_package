@@ -31,6 +31,11 @@ class MedicalPatient(models.Model):
             'UNIQUE(company_id, national_id)',
             'National ID must be unique per company.',
         ),
+        (
+            'partner_company_uniq',
+            'UNIQUE(company_id, partner_id)',
+            'Each contact can only have one patient record per company.',
+        ),
     ]
 
     # --- Delegation ---

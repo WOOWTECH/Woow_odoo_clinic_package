@@ -209,6 +209,20 @@ class MedicalRecord(models.Model):
                     _('A physician must be assigned to the medical record.')
                 )
 
+    @api.constrains('physician_id', 'company_id')
+    def _check_physician_company(self):
+        """Ensure the physician belongs to the same company as the record."""
+        for record in self:
+            if (
+                record.physician_id
+                and record.physician_id.company_id
+                and record.company_id
+                and record.physician_id.company_id != record.company_id
+            ):
+                raise ValidationError(
+                    _('The physician must belong to the same company as the medical record.')
+                )
+
     # ------------------------------------------------------------------
     # Compute
     # ------------------------------------------------------------------
