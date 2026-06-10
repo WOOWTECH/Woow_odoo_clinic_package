@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================ -->
+    <!-- Form View                                                    -->
+    <!-- ============================================================ -->
+    <record id="medical_physician_view_form" model="ir.ui.view">
+        <field name="name">medical.physician.form</field>
+        <field name="model">medical.physician</field>
+        <field name="arch" type="xml">
+            <form string="Physician">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_partner"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-address-card-o">
+                            <field name="related_partner_count"
+                                   widget="statinfo"
+                                   string="Contact"/>
+                        </button>
+                    </div>
+                    <field name="image_1920" widget="image"
+                           class="oe_avatar"
+                           options='{"preview_image": "image_128"}'/>
+                    <div class="oe_title">
+                        <label for="physician_no"/>
+                        <h2>
+                            <field name="physician_no" placeholder="New"/>
+                        </h2>
+                        <label for="name" string="Physician Name"/>
+                        <h1>
+                            <field name="name" placeholder="Physician Name" required="1"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group string="Contact">
+                            <field name="phone" widget="phone"/>
+                            <field name="mobile" widget="phone"/>
+                            <field name="email" widget="email"/>
+                        </group>
+                        <group string="Account">
+                            <field name="user_id"/>
+                            <field name="company_id"
+                                   groups="base.group_multi_company"
+                                   options="{'no_create': True}"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <!-- Tab 1: Professional Info -->
+                        <page string="Professional Info" name="professional_info">
+                            <group>
+                                <group string="Specialty">
+                                    <field name="specialty_id"/>
+                                    <field name="specialty_ids" widget="many2many_tags"/>
+                                </group>
+                                <group string="License">
+                                    <field name="license_no"/>
+                                    <field name="practice_license_no"/>
+                                    <field name="license_expiry"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <!-- Tab 2: Background -->
+                        <page string="Background" name="background">
+                            <group>
+                                <field name="education" placeholder="Education background..."/>
+                            </group>
+                            <group>
+                                <field name="experience" placeholder="Professional experience..."/>
+                            </group>
+                        </page>
+
+                        <!-- Tab 3: Address -->
+                        <page string="Address" name="address">
+                            <group string="Address">
+                                <field name="street" string="Street"/>
+                                <field name="street2" string="Street 2"/>
+                                <field name="city"/>
+                                <field name="state_id"
+                                       options="{'no_create': True}"
+                                       domain="[('country_id', '=?', country_id)]"/>
+                                <field name="zip"/>
+                                <field name="country_id"
+                                       options="{'no_create': True}"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- List / Tree View                                             -->
+    <!-- ============================================================ -->
+    <record id="medical_physician_view_list" model="ir.ui.view">
+        <field name="name">medical.physician.list</field>
+        <field name="model">medical.physician</field>
+        <field name="arch" type="xml">
+            <list string="Physicians">
+                <field name="physician_no"/>
+                <field name="name"/>
+                <field name="specialty_id"/>
+                <field name="phone"/>
+                <field name="license_no"/>
+                <field name="license_expiry"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- Search View                                                  -->
+    <!-- ============================================================ -->
+    <record id="medical_physician_view_search" model="ir.ui.view">
+        <field name="name">medical.physician.search</field>
+        <field name="model">medical.physician</field>
+        <field name="arch" type="xml">
+            <search string="Search Physicians">
+                <field name="name" string="Name / Phone / No."
+                       filter_domain="[
+                           '|', '|',
+                           ('name', 'ilike', self),
+                           ('phone', 'ilike', self),
+                           ('physician_no', 'ilike', self),
+                       ]"/>
+                <field name="physician_no"/>
+                <field name="specialty_id"/>
+                <separator/>
+                <filter name="filter_license_expiring" string="License Expiring (90 days)"
+                        domain="[
+                            ('license_expiry', '!=', False),
+                            ('license_expiry', '&lt;=', (context_today() + relativedelta(days=90)).strftime('%%Y-%%m-%%d')),
+                            ('license_expiry', '&gt;=', context_today().strftime('%%Y-%%m-%%d')),
+                        ]"/>
+                <filter name="filter_license_expired" string="License Expired"
+                        domain="[
+                            ('license_expiry', '!=', False),
+                            ('license_expiry', '&lt;', context_today().strftime('%%Y-%%m-%%d')),
+                        ]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_specialty" string="Specialty"
+                            context="{'group_by': 'specialty_id'}"/>
+                    <filter name="groupby_company" string="Company"
+                            context="{'group_by': 'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- Kanban View (aligned with contacts kanban)                   -->
+    <!-- ============================================================ -->
+    <record id="medical_physician_view_kanban" model="ir.ui.view">
+        <field name="name">medical.physician.kanban</field>
+        <field name="model">medical.physician</field>
+        <field name="arch" type="xml">
+            <kanban sample="1">
+                <field name="id"/>
+                <field name="avatar_128"/>
+                <templates>
+                    <t t-name="card" class="flex-row">
+                        <aside class="o_kanban_aside_full">
+                            <div class="o_kanban_image_fill position-relative w-100">
+                                <field name="avatar_128" alt="Physician image"
+                                       class="h-100" widget="image"
+                                       options="{'img_class': 'object-fit-cover'}"/>
+                            </div>
+                        </aside>
+                        <main class="ps-2 ps-md-0">
+                            <div class="mb-1">
+                                <field name="name" class="mb-0 fw-bold fs-5 text-truncate"/>
+                                <field name="physician_no" class="text-muted"/>
+                            </div>
+                            <field name="specialty_id" class="text-truncate"/>
+                            <field name="phone" widget="phone" class="text-truncate"/>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- Action                                                       -->
+    <!-- ============================================================ -->
+    <record id="medical_physician_action" model="ir.actions.act_window">
+        <field name="name">Physicians</field>
+        <field name="res_model">medical.physician</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="search_view_id" ref="medical_physician_view_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Register your first physician
+            </p>
+            <p>
+                Manage physician profiles, specialties, and license information.
+            </p>
+        </field>
+    </record>
+
+</odoo>

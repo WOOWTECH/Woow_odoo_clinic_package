@@ -1,0 +1,367 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* woow_medical_physician
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-10 00:00+0000\n"
+"PO-Revision-Date: 2026-06-10 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: woow_medical_physician
+#: model:ir.model,name:woow_medical_physician.model_medical_physician
+msgid "Medical Physician"
+msgstr "醫師"
+
+#. module: woow_medical_physician
+#: model:ir.model,name:woow_medical_physician.model_medical_specialty
+msgid "Medical Specialty"
+msgstr "醫療專科"
+
+#. module: woow_medical_physician
+#: model:ir.model,name:woow_medical_physician.model_res_partner
+msgid "Contact"
+msgstr "聯絡人"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,field_description:woow_medical_physician.field_medical_physician__physician_no
+msgid "Physician No."
+msgstr "醫師編號"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,field_description:woow_medical_physician.field_medical_physician__user_id
+msgid "User Account"
+msgstr "使用者帳號"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,field_description:woow_medical_physician.field_medical_physician__specialty_id
+msgid "Primary Specialty"
+msgstr "主專科"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,field_description:woow_medical_physician.field_medical_physician__specialty_ids
+msgid "Additional Specialties"
+msgstr "副專科"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,field_description:woow_medical_physician.field_medical_physician__license_no
+msgid "License No."
+msgstr "醫師證書字號"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,field_description:woow_medical_physician.field_medical_physician__practice_license_no
+msgid "Practice License No."
+msgstr "執業執照號碼"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,field_description:woow_medical_physician.field_medical_physician__license_expiry
+msgid "License Expiry"
+msgstr "執照到期日"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,field_description:woow_medical_physician.field_medical_physician__education
+msgid "Education"
+msgstr "學歷"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,field_description:woow_medical_physician.field_medical_physician__experience
+msgid "Experience"
+msgstr "經歷"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,field_description:woow_medical_physician.field_medical_physician__related_partner_count
+msgid "Related Contact Count"
+msgstr "關聯聯絡人數"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,field_description:woow_medical_physician.field_medical_specialty__name
+msgid "Specialty Name"
+msgstr "專科名稱"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,field_description:woow_medical_physician.field_medical_specialty__code
+msgid "Code"
+msgstr "代碼"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,field_description:woow_medical_physician.field_res_partner__physician_ids
+msgid "Physicians"
+msgstr "醫師"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,help:woow_medical_physician.field_res_partner__physician_ids
+msgid "Physician profiles linked to this contact."
+msgstr "與此聯絡人關聯的醫師檔案。"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,field_description:woow_medical_physician.field_res_partner__physician_count
+msgid "Physician Count"
+msgstr "醫師數"
+
+#. module: woow_medical_physician
+#: model:ir.actions.act_window,name:woow_medical_physician.medical_physician_action
+msgid "Physicians"
+msgstr "醫師列表"
+
+#. module: woow_medical_physician
+#: model:ir.actions.act_window,name:woow_medical_physician.medical_specialty_action
+msgid "Specialties"
+msgstr "專科列表"
+
+#. module: woow_medical_physician
+#: model:ir.ui.menu,name:woow_medical_physician.medical_physician_menu
+msgid "Physicians"
+msgstr "醫師"
+
+#. module: woow_medical_physician
+#: model:ir.ui.menu,name:woow_medical_physician.medical_physician_menu_list
+msgid "Physicians"
+msgstr "醫師列表"
+
+#. module: woow_medical_physician
+#: model:ir.ui.menu,name:woow_medical_physician.medical_specialty_menu
+msgid "Specialties"
+msgstr "專科"
+
+#. module: woow_medical_physician
+#: model:ir.rule,name:woow_medical_physician.medical_physician_comp_rule
+msgid "Medical Physician: Multi-Company"
+msgstr "醫師：多公司"
+
+#. module: woow_medical_physician
+#: model:ir.rule,name:woow_medical_physician.medical_specialty_comp_rule
+msgid "Medical Specialty: Global Read"
+msgstr "醫療專科：全域讀取"
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_form
+msgid "Physician Name"
+msgstr "醫師姓名"
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_form
+msgid "Professional Info"
+msgstr "專業資訊"
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_form
+msgid "Specialty"
+msgstr "專科"
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_form
+msgid "License"
+msgstr "執照"
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_form
+msgid "Background"
+msgstr "背景"
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_form
+msgid "Address"
+msgstr "地址"
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_form
+msgid "Contact"
+msgstr "聯絡資訊"
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_form
+msgid "Account"
+msgstr "帳號"
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_search
+msgid "Name / Phone / No."
+msgstr "姓名 / 電話 / 編號"
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_search
+msgid "License Expiring (90 days)"
+msgstr "執照即將到期（90天內）"
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_search
+msgid "License Expired"
+msgstr "執照已過期"
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_search
+msgid "Group By"
+msgstr "分組"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,help:woow_medical_physician.field_medical_physician__partner_id
+msgid "The underlying res.partner record for this physician."
+msgstr "此醫師的關聯聯絡人記錄。"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,help:woow_medical_physician.field_medical_physician__user_id
+msgid "The Odoo login account linked to this physician."
+msgstr "此醫師關聯的 Odoo 登入帳號。"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,help:woow_medical_physician.field_medical_physician__specialty_id
+msgid "Primary clinical specialty."
+msgstr "主要臨床專科。"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,help:woow_medical_physician.field_medical_physician__specialty_ids
+msgid "Additional clinical specialties."
+msgstr "其他臨床專科。"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,help:woow_medical_physician.field_medical_physician__license_no
+msgid "Medical license certificate number."
+msgstr "醫師證書字號。"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,help:woow_medical_physician.field_medical_physician__practice_license_no
+msgid "Practice license number."
+msgstr "執業執照號碼。"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,help:woow_medical_physician.field_medical_physician__license_expiry
+msgid "License expiration date."
+msgstr "執照到期日。"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,help:woow_medical_physician.field_medical_physician__education
+msgid "Education background."
+msgstr "學歷背景。"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,help:woow_medical_physician.field_medical_physician__experience
+msgid "Professional experience."
+msgstr "專業經歷。"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,help:woow_medical_physician.field_medical_physician__physician_no
+msgid "Auto-generated physician number (D000001)."
+msgstr "自動產生的醫師編號（D000001）。"
+
+#. module: woow_medical_physician
+#: code:addons/woow_medical_physician/models/medical_physician.py:0
+msgid "Physician number must be unique per company."
+msgstr "同一公司內醫師編號不可重複。"
+
+#. module: woow_medical_physician
+#: code:addons/woow_medical_physician/models/medical_physician.py:0
+msgid "License number must be unique per company."
+msgstr "同一公司內醫師證書字號不可重複。"
+
+#. module: woow_medical_physician
+#: model:ir.model.fields,help:woow_medical_physician.field_medical_specialty__code
+msgid "Short code for the specialty."
+msgstr "專科簡碼。"
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_form
+msgid "Education background..."
+msgstr "學歷背景..."
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_form
+msgid "Professional experience..."
+msgstr "專業經歷..."
+
+#. module: woow_medical_physician
+#: model_terms:ir.actions.act_window,help:woow_medical_physician.medical_physician_action
+msgid "Register your first physician"
+msgstr "建立第一位醫師"
+
+#. module: woow_medical_physician
+#: model_terms:ir.actions.act_window,help:woow_medical_physician.medical_physician_action
+msgid "Manage physician profiles, specialties, and license information."
+msgstr "管理醫師檔案、專科與執照資訊。"
+
+#. module: woow_medical_physician
+#: model_terms:ir.actions.act_window,help:woow_medical_physician.medical_specialty_action
+msgid "Create your first specialty"
+msgstr "建立第一個專科"
+
+#. module: woow_medical_physician
+#: model:medical.specialty,name:woow_medical_physician.specialty_family_medicine
+msgid "Family Medicine"
+msgstr "家庭醫學科"
+
+#. module: woow_medical_physician
+#: model:medical.specialty,name:woow_medical_physician.specialty_internal_medicine
+msgid "Internal Medicine"
+msgstr "內科"
+
+#. module: woow_medical_physician
+#: model:medical.specialty,name:woow_medical_physician.specialty_surgery
+msgid "Surgery"
+msgstr "外科"
+
+#. module: woow_medical_physician
+#: model:medical.specialty,name:woow_medical_physician.specialty_pediatrics
+msgid "Pediatrics"
+msgstr "小兒科"
+
+#. module: woow_medical_physician
+#: model:medical.specialty,name:woow_medical_physician.specialty_obstetrics
+msgid "Obstetrics & Gynecology"
+msgstr "婦產科"
+
+#. module: woow_medical_physician
+#: model:medical.specialty,name:woow_medical_physician.specialty_orthopedics
+msgid "Orthopedics"
+msgstr "骨科"
+
+#. module: woow_medical_physician
+#: model:medical.specialty,name:woow_medical_physician.specialty_ophthalmology
+msgid "Ophthalmology"
+msgstr "眼科"
+
+#. module: woow_medical_physician
+#: model:medical.specialty,name:woow_medical_physician.specialty_ent
+msgid "Otolaryngology (ENT)"
+msgstr "耳鼻喉科"
+
+#. module: woow_medical_physician
+#: model:medical.specialty,name:woow_medical_physician.specialty_dermatology
+msgid "Dermatology"
+msgstr "皮膚科"
+
+#. module: woow_medical_physician
+#: model:medical.specialty,name:woow_medical_physician.specialty_urology
+msgid "Urology"
+msgstr "泌尿科"
+
+#. module: woow_medical_physician
+#: model:medical.specialty,name:woow_medical_physician.specialty_psychiatry
+msgid "Psychiatry"
+msgstr "精神科"
+
+#. module: woow_medical_physician
+#: model:medical.specialty,name:woow_medical_physician.specialty_dentistry
+msgid "Dentistry"
+msgstr "牙科"
+
+#. module: woow_medical_physician
+#: model:medical.specialty,name:woow_medical_physician.specialty_tcm
+msgid "Traditional Chinese Medicine"
+msgstr "中醫科"
+
+#. module: woow_medical_physician
+#: model_terms:ir.ui.view,arch_db:woow_medical_physician.medical_physician_view_search
+msgid "Search Physicians"
+msgstr "搜尋醫師"
+
+#. module: woow_medical_physician
+#: model:ir.sequence,name:woow_medical_physician.seq_medical_physician
+msgid "Medical Physician"
+msgstr "醫師編號"

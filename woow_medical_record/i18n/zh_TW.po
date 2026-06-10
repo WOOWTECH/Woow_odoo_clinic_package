@@ -744,3 +744,23 @@ msgstr "病歷：管理者全部病歷"
 #: model:ir.rule,name:woow_medical_record.medical_record_log_comp_rule
 msgid "Medical Record Log: Multi-Company"
 msgstr "病歷存取紀錄：多公司"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_physician__record_ids
+msgid "Medical Records"
+msgstr "病歷"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,help:woow_medical_record.field_medical_physician__record_ids
+msgid "All medical records by this physician."
+msgstr "此醫師的所有病歷。"
+
+#. module: woow_medical_record
+#: model:ir.model.fields,field_description:woow_medical_record.field_medical_physician__record_count
+msgid "Record Count"
+msgstr "病歷數"
+
+#. module: woow_medical_record
+#: model_terms:ir.ui.view,arch_db:woow_medical_record.medical_physician_view_form_inherit_record
+msgid "Records"
+msgstr "病歷"

@@ -158,7 +158,7 @@
                 <field name="physician_id"/>
                 <separator/>
                 <filter name="filter_my_records" string="My Records"
-                        domain="[('physician_id', '=', uid)]"/>
+                        domain="[('physician_id.user_id', '=', uid)]"/>
                 <separator/>
                 <filter name="filter_today" string="Today"
                         domain="[('visit_date', '&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0))),

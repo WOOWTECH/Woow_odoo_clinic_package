@@ -21,7 +21,7 @@
     <record id="medical_record_physician_rule" model="ir.rule">
         <field name="name">Medical Record: Physician Own Records</field>
         <field name="model_id" ref="model_medical_record"/>
-        <field name="domain_force">[('physician_id', '=', user.id)]</field>
+        <field name="domain_force">[('physician_id.user_id', '=', user.id)]</field>
         <field name="groups" eval="[(4, ref('woow_medical_patient.group_medical_physician'))]"/>
     </record>
 

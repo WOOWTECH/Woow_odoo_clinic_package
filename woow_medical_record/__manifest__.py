@@ -16,6 +16,7 @@ Woow Medical - Medical Record Management
     'license': 'LGPL-3',
     'depends': [
         'woow_medical_patient',
+        'woow_medical_physician',
         'mail',
     ],
     'data': [
@@ -30,6 +31,8 @@ Woow Medical - Medical Record Management
         'views/medical_record_menus.xml',
         # Patient view extension
         'views/medical_patient_views.xml',
+        # Physician view extension
+        'views/medical_physician_views.xml',
     ],
     'demo': [
         'demo/medical_record_demo.xml',

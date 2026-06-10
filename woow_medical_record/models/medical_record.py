@@ -50,17 +50,14 @@ class MedicalRecord(models.Model):
         store=True,
     )
     physician_id = fields.Many2one(
-        'res.users',
+        'medical.physician',
         string='Physician',
         required=True,
-        default=lambda self: self.env.user,
+        default=lambda self: self.env['medical.physician'].search(
+            [('user_id', '=', self.env.uid)], limit=1,
+        ),
         tracking=True,
         index=True,
-        domain=lambda self: [
-            ('groups_id', 'in', [
-                self.env.ref('woow_medical_patient.group_medical_physician').id,
-            ])
-        ],
         help='The physician responsible for this record.',
     )
     visit_date = fields.Datetime(
@@ -385,7 +382,7 @@ class MedicalRecord(models.Model):
             is_admin = self.env.user.has_group(
                 'woow_medical_patient.group_medical_admin'
             )
-            if record.physician_id.id != self.env.uid and not is_admin:
+            if record.physician_id.user_id.id != self.env.uid and not is_admin:
                 raise UserError(
                     _('Only the responsible physician can sign this record.')
                 )

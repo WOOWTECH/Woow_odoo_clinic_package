@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Multi-Company Record Rule: medical.physician -->
+    <record id="medical_physician_comp_rule" model="ir.rule">
+        <field name="name">Medical Physician: Multi-Company</field>
+        <field name="model_id" ref="model_medical_physician"/>
+        <field name="domain_force">[
+            '|',
+            ('company_id', '=', False),
+            ('company_id', 'in', company_ids),
+        ]</field>
+        <field name="global" eval="True"/>
+    </record>
+
+    <!-- Multi-Company Record Rule: medical.specialty -->
+    <record id="medical_specialty_comp_rule" model="ir.rule">
+        <field name="name">Medical Specialty: Global Read</field>
+        <field name="model_id" ref="model_medical_specialty"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="global" eval="True"/>
+    </record>
+
+</odoo>

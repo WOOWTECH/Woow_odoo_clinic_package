@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <!-- Physician Number Sequence: D000001, D000002, ... -->
+    <record id="seq_medical_physician" model="ir.sequence">
+        <field name="name">Medical Physician</field>
+        <field name="code">medical.physician</field>
+        <field name="prefix">D</field>
+        <field name="padding">6</field>
+        <field name="implementation">no_gap</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

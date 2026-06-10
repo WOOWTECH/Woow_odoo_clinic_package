@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Extend Physician Form: add stat button for records -->
+    <record id="medical_physician_view_form_inherit_record" model="ir.ui.view">
+        <field name="name">medical.physician.form.inherit.record</field>
+        <field name="model">medical.physician</field>
+        <field name="inherit_id" ref="woow_medical_physician.medical_physician_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Add stat button -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_records"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-file-text-o">
+                    <field name="record_count"
+                           widget="statinfo"
+                           string="Records"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

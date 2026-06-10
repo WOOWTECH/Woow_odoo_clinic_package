@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Extend Partner Form: add Physician smart button -->
+    <record id="res_partner_view_form_inherit_physician" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.physician</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_open_physicians"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-user-md"
+                        invisible="physician_count == 0"
+                        groups="woow_medical_patient.group_medical_user">
+                    <field name="physician_count"
+                           widget="statinfo"
+                           string="Physician"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

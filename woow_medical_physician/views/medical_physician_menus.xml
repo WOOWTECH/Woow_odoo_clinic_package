@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Sub-menu: Physicians -->
+    <menuitem id="medical_physician_menu"
+              name="Physicians"
+              parent="woow_medical_patient.medical_root_menu"
+              sequence="15"/>
+
+    <!-- Menu Item: Physician List -->
+    <menuitem id="medical_physician_menu_list"
+              name="Physicians"
+              parent="medical_physician_menu"
+              action="medical_physician_action"
+              sequence="10"/>
+
+    <!-- Configuration: Specialties -->
+    <menuitem id="medical_specialty_menu"
+              name="Specialties"
+              parent="woow_medical_patient.medical_config_menu"
+              action="medical_specialty_action"
+              sequence="10"/>
+
+</odoo>

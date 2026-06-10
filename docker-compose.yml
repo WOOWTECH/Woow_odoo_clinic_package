@@ -26,6 +26,7 @@ services:
     volumes:
       - odoo-clinic-web-data:/var/lib/odoo
       - ./woow_medical_patient:/mnt/extra-addons/woow_medical_patient
+      - ./woow_medical_physician:/mnt/extra-addons/woow_medical_physician
       - ./woow_medical_record:/mnt/extra-addons/woow_medical_record
       - ./config/odoo.conf:/etc/odoo/odoo.conf
     restart: unless-stopped

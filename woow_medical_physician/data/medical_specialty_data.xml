@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="specialty_family_medicine" model="medical.specialty">
+        <field name="name">Family Medicine</field>
+        <field name="code">FM</field>
+    </record>
+    <record id="specialty_internal_medicine" model="medical.specialty">
+        <field name="name">Internal Medicine</field>
+        <field name="code">IM</field>
+    </record>
+    <record id="specialty_surgery" model="medical.specialty">
+        <field name="name">Surgery</field>
+        <field name="code">SU</field>
+    </record>
+    <record id="specialty_pediatrics" model="medical.specialty">
+        <field name="name">Pediatrics</field>
+        <field name="code">PD</field>
+    </record>
+    <record id="specialty_obstetrics" model="medical.specialty">
+        <field name="name">Obstetrics &amp; Gynecology</field>
+        <field name="code">OG</field>
+    </record>
+    <record id="specialty_orthopedics" model="medical.specialty">
+        <field name="name">Orthopedics</field>
+        <field name="code">OR</field>
+    </record>
+    <record id="specialty_ophthalmology" model="medical.specialty">
+        <field name="name">Ophthalmology</field>
+        <field name="code">OP</field>
+    </record>
+    <record id="specialty_ent" model="medical.specialty">
+        <field name="name">Otolaryngology (ENT)</field>
+        <field name="code">ENT</field>
+    </record>
+    <record id="specialty_dermatology" model="medical.specialty">
+        <field name="name">Dermatology</field>
+        <field name="code">DM</field>
+    </record>
+    <record id="specialty_urology" model="medical.specialty">
+        <field name="name">Urology</field>
+        <field name="code">UR</field>
+    </record>
+    <record id="specialty_psychiatry" model="medical.specialty">
+        <field name="name">Psychiatry</field>
+        <field name="code">PS</field>
+    </record>
+    <record id="specialty_dentistry" model="medical.specialty">
+        <field name="name">Dentistry</field>
+        <field name="code">DN</field>
+    </record>
+    <record id="specialty_tcm" model="medical.specialty">
+        <field name="name">Traditional Chinese Medicine</field>
+        <field name="code">TCM</field>
+    </record>
+</odoo>

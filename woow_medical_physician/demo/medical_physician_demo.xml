@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="demo_physician_1" model="medical.physician">
+        <field name="name">Dr. 陳明德</field>
+        <field name="phone">0911222333</field>
+        <field name="email">dr.chen@example.com</field>
+        <field name="user_id" ref="base.user_admin"/>
+        <field name="specialty_id" ref="specialty_dermatology"/>
+        <field name="license_no">醫字第012345號</field>
+        <field name="practice_license_no">醫執字第067890號</field>
+        <field name="license_expiry">2028-12-31</field>
+        <field name="education">國立臺灣大學醫學系
+臺大醫院皮膚科住院醫師</field>
+        <field name="experience">台北市立聯合醫院皮膚科主治醫師 (2015-2020)
+美麗診所院長 (2020-)</field>
+    </record>
+
+    <record id="demo_physician_2" model="medical.physician">
+        <field name="name">Dr. 林雅芳</field>
+        <field name="phone">0922333444</field>
+        <field name="email">dr.lin@example.com</field>
+        <field name="specialty_id" ref="specialty_surgery"/>
+        <field name="specialty_ids" eval="[(4, ref('specialty_dermatology'))]"/>
+        <field name="license_no">醫字第023456號</field>
+        <field name="practice_license_no">醫執字第078901號</field>
+        <field name="license_expiry">2027-06-30</field>
+        <field name="education">長庚大學醫學系
+長庚醫院整形外科住院醫師</field>
+        <field name="experience">長庚醫院整形外科主治醫師 (2016-2021)
+美麗診所主治醫師 (2021-)</field>
+    </record>
+
+    <record id="demo_physician_3" model="medical.physician">
+        <field name="name">Dr. 黃志偉</field>
+        <field name="phone">0933444555</field>
+        <field name="email">dr.huang@example.com</field>
+        <field name="specialty_id" ref="specialty_family_medicine"/>
+        <field name="license_no">醫字第034567號</field>
+        <field name="practice_license_no">醫執字第089012號</field>
+        <field name="license_expiry">2026-03-31</field>
+        <field name="education">高雄醫學大學醫學系</field>
+        <field name="experience">高雄市立大同醫院家醫科主治醫師 (2018-)
+美麗診所兼任醫師 (2023-)</field>
+    </record>
+
+</odoo>
